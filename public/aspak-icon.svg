@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" fill="none">
+  <defs>
+    <linearGradient id="navyA" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#2255a0"/>
+      <stop offset="100%" stop-color="#0d2b52"/>
+    </linearGradient>
+    <linearGradient id="navyG" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#1a4a90"/>
+      <stop offset="100%" stop-color="#0d2352"/>
+    </linearGradient>
+    <linearGradient id="goldTop" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#f8e878"/>
+      <stop offset="35%" stop-color="#d4a820"/>
+      <stop offset="100%" stop-color="#a07010"/>
+    </linearGradient>
+    <linearGradient id="goldSwoosh" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b88c10"/>
+      <stop offset="30%" stop-color="#e8c030"/>
+      <stop offset="65%" stop-color="#f8e060"/>
+      <stop offset="100%" stop-color="#d4a820"/>
+    </linearGradient>
+    <radialGradient id="globeFill" cx="38%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f0f4fc"/>
+      <stop offset="50%" stop-color="#d0ddf0"/>
+      <stop offset="100%" stop-color="#a8bcd8"/>
+    </radialGradient>
+    <filter id="sh" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-color="#000820" flood-opacity="0.45"/>
+    </filter>
+    <filter id="shLight" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0.5" dy="1" stdDeviation="1.5" flood-color="#000820" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- ═══ LETTER A ═══ (bold navy, sharp peak, no crossbar, left side) -->
+  <!-- Main A body — wide at base, sharp peak -->
+  <path d="M 10 170 L 62 22 L 78 22 L 116 150 L 100 150 L 68 46 L 26 170 Z"
+        fill="url(#navyA)" filter="url(#sh)"/>
+  <!-- A right inner cutout (the hollow valley) -->
+  <path d="M 36 138 L 68 50 L 95 138 Z" fill="#07172e"/>
+
+  <!-- ═══ LETTER G ═══ -->
+  <!-- G is a bold C-shape. Top arc = gold, bottom arc = navy, globe sits inside -->
+  <!-- Outer C shell — navy fill, then gold overlay on top portion -->
+
+  <!-- Full G shape (navy base) — C open to right -->
+  <!-- Top-left corner of G down to bottom-left, sweeping around -->
+  <path d="
+    M 100 22
+    Q 185 18 192 90
+    Q 195 135 170 158
+    Q 152 175 120 178
+    L 120 158
+    Q 148 156 162 142
+    Q 180 124 178 92
+    Q 175 42 104 40
+    L 104 22
+    Z"
+        fill="url(#navyG)" filter="url(#sh)"/>
+
+  <!-- G left vertical stem -->
+  <path d="M 100 22 L 118 22 L 118 178 L 100 178 Z" fill="url(#navyG)"/>
+
+  <!-- G bottom arc (navy, covers lower half) -->
+  <path d="
+    M 100 178
+    Q 120 178 138 172
+    Q 162 162 174 144
+    Q 183 128 180 108
+    L 163 108
+    Q 166 124 158 138
+    Q 148 154 130 160
+    Q 116 165 102 165
+    L 100 165
+    Z"
+        fill="url(#navyG)"/>
+
+  <!-- G top arc GOLD overlay — upper arc only -->
+  <path d="
+    M 104 22
+    Q 186 20 192 88
+    L 176 90
+    Q 174 42 106 40
+    Z"
+        fill="url(#goldTop)" filter="url(#shLight)"/>
+
+  <!-- G inner horizontal shelf / notch (the flat bit on right side of G) -->
+  <path d="M 118 108 L 168 108 L 168 126 L 118 126 Z" fill="url(#navyG)"/>
+
+  <!-- ═══ GLOBE ═══ — white/silver sphere sitting inside the G -->
+  <circle cx="148" cy="100" r="38" fill="url(#globeFill)" filter="url(#shLight)"/>
+  <!-- Globe border -->
+  <circle cx="148" cy="100" r="38" stroke="#8aaac8" stroke-width="0.8" fill="none"/>
+  <!-- Latitude lines -->
+  <ellipse cx="148" cy="100" rx="38" ry="12" stroke="#6888b0" stroke-width="0.65" fill="none" opacity="0.5"/>
+  <ellipse cx="148" cy="84"  rx="34" ry="9"  stroke="#6888b0" stroke-width="0.55" fill="none" opacity="0.38"/>
+  <ellipse cx="148" cy="116" rx="34" ry="9"  stroke="#6888b0" stroke-width="0.55" fill="none" opacity="0.38"/>
+  <!-- Longitude curves -->
+  <ellipse cx="148" cy="100" rx="18" ry="38" stroke="#6888b0" stroke-width="0.55" fill="none" opacity="0.4"/>
+  <ellipse cx="148" cy="100" rx="32" ry="38" stroke="#6888b0" stroke-width="0.45" fill="none" opacity="0.3"/>
+  <line x1="110" y1="100" x2="186" y2="100" stroke="#6888b0" stroke-width="0.6" opacity="0.4"/>
+  <line x1="148" y1="62"  x2="148" y2="138" stroke="#6888b0" stroke-width="0.6" opacity="0.4"/>
+  <!-- Continent hint (Asia/Europe region) -->
+  <path d="M 138 80 C 142 74 155 76 160 84 C 164 90 160 98 154 101 C 146 105 138 100 134 93 C 130 86 132 82 138 80 Z"
+        fill="#4870a8" opacity="0.38"/>
+  <path d="M 148 90 C 152 88 158 90 160 95 C 162 100 158 104 153 105 C 148 106 143 102 142 97 C 141 92 144 91 148 90 Z"
+        fill="#4870a8" opacity="0.28"/>
+  <!-- Globe specular highlight -->
+  <ellipse cx="138" cy="86" rx="9" ry="7" fill="white" opacity="0.32"/>
+  <ellipse cx="135" cy="83" rx="4" ry="3" fill="white" opacity="0.45"/>
+
+  <!-- ═══ GOLD SWOOSH ═══ — diagonal ribbon from lower-left through center to upper-right -->
+  <!-- The swoosh is a wide gold band, angled ~35° from lower-left to upper-right -->
+  <!-- Shadow/depth band (darker, behind) -->
+  <path d="M 8 172 Q 58 132 110 100 Q 158 72 196 52"
+        stroke="#9a7010" stroke-width="13" stroke-linecap="round" fill="none" opacity="0.45"/>
+  <!-- Main gold swoosh -->
+  <path d="M 8 168 Q 58 128 110 96 Q 158 68 196 48"
+        stroke="url(#goldSwoosh)" stroke-width="10" stroke-linecap="round" fill="none"
+        filter="url(#shLight)"/>
+  <!-- Swoosh highlight (top bright edge) -->
+  <path d="M 10 163 Q 59 123 111 91 Q 159 63 196 44"
+        stroke="#fef4a0" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.65"/>
+
+  <!-- ═══ STAR SPARK ═══ — 4-point star at the right end of the swoosh -->
+  <g transform="translate(198, 46)">
+    <!-- Outer glow halo -->
+    <circle cx="0" cy="0" r="7" fill="#ffe060" opacity="0.25"/>
+    <!-- 4-point star -->
+    <path d="M 0 -11  L 1.4 -1.4  L 11 0  L 1.4 1.4  L 0 11  L -1.4 1.4  L -11 0  L -1.4 -1.4 Z"
+          fill="#fff8d0"/>
+    <!-- Inner brighter core -->
+    <path d="M 0 -6  L 0.8 -0.8  L 6 0  L 0.8 0.8  L 0 6  L -0.8 0.8  L -6 0  L -0.8 -0.8 Z"
+          fill="white"/>
+    <circle cx="0" cy="0" r="1.5" fill="white"/>
+  </g>
+</svg>

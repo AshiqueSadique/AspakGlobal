@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" fill="none">
+  <defs>
+    <linearGradient id="navyA" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#2255a8"/>
+      <stop offset="100%" stop-color="#0d2352"/>
+    </linearGradient>
+    <linearGradient id="navyG" x1="0.2" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a4a90"/>
+      <stop offset="100%" stop-color="#0d2352"/>
+    </linearGradient>
+    <linearGradient id="goldTop" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#f8e878"/>
+      <stop offset="40%" stop-color="#d4a820"/>
+      <stop offset="100%" stop-color="#9a6c08"/>
+    </linearGradient>
+    <linearGradient id="goldSwoosh" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a07010"/>
+      <stop offset="25%" stop-color="#d4a820"/>
+      <stop offset="60%" stop-color="#f8e060"/>
+      <stop offset="100%" stop-color="#c9a020"/>
+    </linearGradient>
+    <linearGradient id="navyText" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a4a90"/>
+      <stop offset="100%" stop-color="#0d2352"/>
+    </linearGradient>
+    <radialGradient id="globeFill" cx="36%" cy="32%" r="58%">
+      <stop offset="0%" stop-color="#f2f6fc"/>
+      <stop offset="45%" stop-color="#cddaee"/>
+      <stop offset="100%" stop-color="#a0b8d4"/>
+    </radialGradient>
+    <filter id="sh" x="-12%" y="-12%" width="124%" height="128%">
+      <feDropShadow dx="1" dy="2.5" stdDeviation="3.5" flood-color="#000820" flood-opacity="0.48"/>
+    </filter>
+    <filter id="shS" x="-8%" y="-8%" width="116%" height="120%">
+      <feDropShadow dx="0.5" dy="1.2" stdDeviation="2" flood-color="#000820" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <!-- ══ LETTER A ══ -->
+  <path d="M 30 308 L 116 42 L 146 42 L 228 280 L 190 280 L 130 82 L 66 308 Z"
+        fill="url(#navyA)" filter="url(#sh)"/>
+  <!-- A inner valley -->
+  <path d="M 78 252 L 130 88 L 180 252 Z" fill="#071428"/>
+
+  <!-- ══ LETTER G ══ -->
+  <!-- Navy base C-shape -->
+  <path d="
+    M 196 42 L 220 42
+    Q 326 38 348 154
+    Q 356 208 334 262
+    Q 313 308 258 320
+    L 228 320 L 228 292
+    Q 274 282 298 246
+    Q 316 214 310 154
+    Q 298 70 224 62
+    L 196 62 Z"
+        fill="url(#navyG)" filter="url(#sh)"/>
+  <!-- G left stem -->
+  <path d="M 196 42 L 226 42 L 226 320 L 196 320 Z" fill="url(#navyG)"/>
+  <!-- G gold top arc overlay -->
+  <path d="
+    M 200 42 L 228 42 L 228 62
+    Q 298 62 322 140
+    L 348 140
+    Q 340 54 268 44
+    Q 242 40 224 42 Z"
+        fill="url(#goldTop)" filter="url(#shS)"/>
+  <!-- G shelf -->
+  <path d="M 226 198 L 326 198 L 326 232 L 226 232 Z" fill="url(#navyG)"/>
+
+  <!-- ══ GLOBE ══ -->
+  <circle cx="282" cy="182" r="67" fill="url(#globeFill)" filter="url(#shS)"/>
+  <circle cx="282" cy="182" r="67" stroke="#8aaac8" stroke-width="0.9" fill="none"/>
+  <ellipse cx="282" cy="182" rx="67" ry="21" stroke="#6888b0" stroke-width="0.8" fill="none" opacity="0.5"/>
+  <ellipse cx="282" cy="158" rx="62" ry="16" stroke="#6888b0" stroke-width="0.65" fill="none" opacity="0.36"/>
+  <ellipse cx="282" cy="206" rx="62" ry="16" stroke="#6888b0" stroke-width="0.65" fill="none" opacity="0.36"/>
+  <ellipse cx="282" cy="182" rx="33" ry="67" stroke="#6888b0" stroke-width="0.7" fill="none" opacity="0.38"/>
+  <ellipse cx="282" cy="182" rx="56" ry="67" stroke="#6888b0" stroke-width="0.55" fill="none" opacity="0.26"/>
+  <line x1="215" y1="182" x2="349" y2="182" stroke="#6888b0" stroke-width="0.75" opacity="0.4"/>
+  <line x1="282" y1="115" x2="282" y2="249" stroke="#6888b0" stroke-width="0.75" opacity="0.4"/>
+  <!-- Continent -->
+  <path d="M 266 146 C 272 136 288 138 296 148 C 302 156 298 168 290 172
+           C 280 177 268 172 262 162 C 256 152 260 148 266 146 Z"
+        fill="#3868a8" opacity="0.4"/>
+  <path d="M 288 154 C 294 148 304 151 308 160 C 312 168 306 177 298 180
+           C 290 183 282 176 280 168 C 278 160 282 157 288 154 Z"
+        fill="#4878b8" opacity="0.3"/>
+  <!-- Specular -->
+  <ellipse cx="263" cy="156" rx="16" ry="11" fill="white" opacity="0.33"/>
+  <ellipse cx="257" cy="150" rx="7"  ry="5"  fill="white" opacity="0.5"/>
+
+  <!-- ══ SWOOSH ══ -->
+  <path d="M 20 322 Q 108 248 204 178 Q 286 118 360 82"
+        stroke="#805808" stroke-width="21" stroke-linecap="round" fill="none" opacity="0.32"/>
+  <path d="M 22 316 Q 110 242 206 172 Q 288 112 360 76"
+        stroke="url(#goldSwoosh)" stroke-width="16" stroke-linecap="round" fill="none"
+        filter="url(#shS)"/>
+  <path d="M 24 306 Q 112 232 208 162 Q 290 102 360 68"
+        stroke="#fef4a0" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.58"/>
+  <path d="M 22 328 Q 110 254 206 184 Q 288 124 360 88"
+        stroke="#7a5008" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.38"/>
+
+  <!-- ══ STAR ══ -->
+  <g transform="translate(364, 72)">
+    <circle cx="0" cy="0" r="12" fill="#ffe060" opacity="0.2"/>
+    <circle cx="0" cy="0" r="7"  fill="#fff4a0" opacity="0.32"/>
+    <path d="M 0 -18  L 2.2 -2.2  L 18 0  L 2.2 2.2  L 0 18  L -2.2 2.2  L -18 0  L -2.2 -2.2 Z"
+          fill="#fff8d0"/>
+    <path d="M 0 -10  L 1.2 -1.2  L 10 0  L 1.2 1.2  L 0 10  L -1.2 1.2  L -10 0  L -1.2 -1.2 Z"
+          fill="white"/>
+    <circle cx="0" cy="0" r="2" fill="white"/>
+  </g>
+
+  <!-- ══ TEXT ══ -->
+  <!-- ASPAK GLOBAL -->
+  <text x="300" y="362"
+        text-anchor="middle"
+        font-family="Prompt, Arial, sans-serif"
+        font-weight="800"
+        font-size="46"
+        fill="#0d2352">
+    <tspan fill="#0d2352">ASPAK </tspan><tspan fill="#c9a020">GLOBAL</tspan>
+  </text>
+
+  <!-- Decorative lines around CO., LTD. -->
+  <line x1="88"  y1="376" x2="206" y2="376" stroke="#c9a020" stroke-width="1.2"/>
+  <line x1="394" y1="376" x2="512" y2="376" stroke="#c9a020" stroke-width="1.2"/>
+
+  <text x="300" y="395"
+        text-anchor="middle"
+        font-family="Prompt, Arial, sans-serif"
+        font-weight="600"
+        font-size="17"
+        letter-spacing="5"
+        fill="#0d2352">CO., LTD.</text>
+
+  <!-- Thai name -->
+  <text x="300" y="428"
+        text-anchor="middle"
+        font-family="Prompt, Arial, sans-serif"
+        font-weight="500"
+        font-size="15"
+        letter-spacing="1"
+        fill="#0d2352">บริษัท แอสแพค โกลบอล จำกัด</text>
+
+  <!-- Tagline -->
+  <line x1="88"  y1="446" x2="206" y2="446" stroke="#c9a020" stroke-width="0.8" opacity="0.65"/>
+  <line x1="394" y1="446" x2="512" y2="446" stroke="#c9a020" stroke-width="0.8" opacity="0.65"/>
+  <text x="300" y="460"
+        text-anchor="middle"
+        font-family="Prompt, Arial, sans-serif"
+        font-weight="400"
+        font-size="10.5"
+        letter-spacing="3.5"
+        fill="#c9a020">CONNECTING SOLUTIONS, CREATING VALUE</text>
+</svg>

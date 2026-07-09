@@ -1,0 +1,409 @@
+{
+  "meta": {
+    "siteName": "Aspak Global Co., Ltd.",
+    "tagline": "Connecting Solutions, Creating Value"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "servicesMenu": {
+      "hub": "All Services",
+      "itSolutions": "IT Solutions",
+      "importExport": "Import & Export",
+      "packaging": "Packaging & Paper",
+      "officeSupply": "Office Supply",
+      "cleaning": "Cleaning Services"
+    }
+  },
+  "langToggle": {
+    "current": "EN",
+    "other": "TH",
+    "label": "Switch to Thai"
+  },
+  "home": {
+    "meta": {
+      "title": "Aspak Global Co., Ltd. — Connecting Solutions, Creating Value",
+      "description": "Bangkok-based trading and services company offering IT Solutions, Import & Export, Packaging, Office Supply, and Cleaning Services."
+    },
+    "hero": {
+      "eyebrow": "Bangkok, Thailand",
+      "headline": "Connecting Solutions,\nCreating Value",
+      "subheadline": "A diversified trading and services company delivering excellence across five business lines — from technology to logistics.",
+      "cta": "Explore Our Services",
+      "ctaSecondary": "Contact Us"
+    },
+    "intro": {
+      "label": "Who We Are",
+      "heading": "Your Trusted Partner in Business",
+      "body": "Aspak Global Co., Ltd. is a Bangkok-based trading and services company committed to delivering integrated solutions that help businesses grow. With expertise spanning five complementary business lines, we combine local knowledge with international standards to create lasting value for our clients.",
+      "since": "Established in Bangkok"
+    },
+    "services": {
+      "label": "What We Do",
+      "heading": "Five Business Lines,\nOne Trusted Partner",
+      "items": [
+        {
+          "id": "it-solutions",
+          "title": "IT Solutions",
+          "description": "End-to-end technology services — from software development and cloud infrastructure to cybersecurity and IT consulting.",
+          "icon": "laptop"
+        },
+        {
+          "id": "import-export",
+          "title": "Import & Export",
+          "description": "International trade facilitation, sourcing, distribution, and agency services connecting Thailand to global markets.",
+          "icon": "globe"
+        },
+        {
+          "id": "packaging-paper",
+          "title": "Packaging & Paper",
+          "description": "Paper boxes, corrugated packaging, kraft and plastic solutions for every industry and scale.",
+          "icon": "package"
+        },
+        {
+          "id": "office-supply",
+          "title": "Office Supply",
+          "description": "Comprehensive stationery, equipment, ink, filing, and technology supplies for modern workplaces.",
+          "icon": "briefcase"
+        },
+        {
+          "id": "cleaning",
+          "title": "Cleaning Services",
+          "description": "Professional cleaning for offices, factories, hotels, and residences — branded as Dee Cleaning Company.",
+          "icon": "sparkles"
+        }
+      ],
+      "learnMore": "Learn More",
+      "viewAll": "View All Services"
+    },
+    "stats": {
+      "label": "By the Numbers",
+      "items": [
+        { "value": 5, "suffix": "", "label": "Business Lines" },
+        { "value": 20, "suffix": "+", "label": "Countries Served" },
+        { "value": 150, "suffix": "+", "label": "Clients Supported" },
+        { "value": 1, "suffix": "", "label": "Bangkok, Thailand" }
+      ]
+    },
+    "why": {
+      "label": "Why Choose Us",
+      "heading": "Built on Trust,\nDriven by Excellence",
+      "items": [
+        {
+          "title": "Local Expertise",
+          "description": "Deep roots in Bangkok's business community with an understanding of Thai market dynamics and regulatory landscape."
+        },
+        {
+          "title": "International Standards",
+          "description": "We apply global best practices across every service line, ensuring quality that meets the expectations of international clients."
+        },
+        {
+          "title": "Integrated Solutions",
+          "description": "Five complementary business lines mean you can meet multiple operational needs with one trusted partner."
+        },
+        {
+          "title": "Dedicated Support",
+          "description": "Our team is committed to responsive, personalized service — from initial consultation through long-term partnership."
+        }
+      ]
+    },
+    "cta": {
+      "heading": "Ready to Work Together?",
+      "body": "Whether you need technology, logistics, supplies, or cleaning services, Aspak Global has the expertise and the network to deliver.",
+      "btn": "Get in Touch",
+      "btnSecondary": "Learn About Us"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About Aspak Global Co., Ltd.",
+      "description": "Learn about our company story, mission, vision, and the team behind Aspak Global."
+    },
+    "hero": {
+      "label": "Our Story",
+      "heading": "A Company Built for the\nModern Thai Economy",
+      "body": "Aspak Global was founded to bridge the gap between Thailand's dynamic market and the world — delivering integrated services that empower businesses to grow, compete, and thrive."
+    },
+    "mission": {
+      "label": "Mission & Vision",
+      "missionTitle": "Our Mission",
+      "missionBody": "To connect businesses with the solutions they need — through technology, trade, and service — creating measurable value at every step.",
+      "visionTitle": "Our Vision",
+      "visionBody": "To be the most trusted and versatile integrated services company in Southeast Asia, recognized for integrity, innovation, and impact."
+    },
+    "values": {
+      "label": "Our Values",
+      "heading": "What We Stand For",
+      "items": [
+        { "title": "Integrity", "description": "We conduct every engagement with transparency and accountability." },
+        { "title": "Excellence", "description": "We set high standards and pursue them relentlessly in every service we deliver." },
+        { "title": "Partnership", "description": "We succeed when our clients succeed — long-term relationships are our foundation." },
+        { "title": "Innovation", "description": "We continuously look for smarter, more efficient ways to serve our clients." }
+      ]
+    },
+    "leadership": {
+      "label": "Leadership",
+      "heading": "Guided by Experience",
+      "director": {
+        "name": "Ms. Pitchayapak Kaewsart",
+        "title": "Director",
+        "bio": "Ms. Pitchayapak Kaewsart leads Aspak Global with a focus on sustainable growth, client partnerships, and operational excellence across all five business divisions."
+      }
+    },
+    "timeline": {
+      "label": "Our Journey",
+      "heading": "Milestones That Shaped Us",
+      "items": [
+        { "year": "2020", "title": "Company Founded", "description": "Aspak Global Co., Ltd. was established in Bangkok with a vision to deliver integrated trading and services solutions." },
+        { "year": "2021", "title": "IT Division Launched", "description": "Expanded into IT Solutions, offering software development, network infrastructure, and consulting services to Thai businesses." },
+        { "year": "2022", "title": "Import & Export Operations", "description": "Established international trade channels, connecting Thai businesses with suppliers and buyers across 20+ countries." },
+        { "year": "2023", "title": "Packaging & Office Supply", "description": "Added Packaging & Paper and Office Supply divisions, providing comprehensive B2B product solutions to corporate clients." },
+        { "year": "2024", "title": "Dee Cleaning Company", "description": "Launched Dee Cleaning Company, bringing professional cleaning services to offices, hotels, hospitals, and residences across Bangkok." },
+        { "year": "2025", "title": "Growth & Expansion", "description": "Continued expansion of our client portfolio and service capabilities, cementing our position as a trusted multi-service partner." }
+      ]
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Our Services — Aspak Global Co., Ltd.",
+      "description": "Explore all five business lines of Aspak Global: IT Solutions, Import & Export, Packaging, Office Supply, and Cleaning Services."
+    },
+    "hero": {
+      "label": "What We Offer",
+      "heading": "Five Business Lines,\nEndless Possibilities",
+      "body": "From technology and international trade to packaging, office supply, and professional cleaning — Aspak Global delivers comprehensive solutions under one roof."
+    },
+    "grid": {
+      "learnMore": "Explore Service"
+    }
+  },
+  "itSolutions": {
+    "meta": {
+      "title": "IT Solutions — Aspak Global Co., Ltd.",
+      "description": "End-to-end IT services including software development, cloud infrastructure, cybersecurity, and IT consulting in Bangkok."
+    },
+    "hero": {
+      "label": "IT Solutions",
+      "heading": "Technology That\nMoves Your Business Forward",
+      "body": "We deliver end-to-end IT services tailored to the needs of Thai businesses — from custom software development and cloud migration to cybersecurity and ongoing IT support."
+    },
+    "services": {
+      "heading": "What We Deliver",
+      "items": [
+        { "title": "Software Development", "description": "Custom web and mobile applications built to solve your specific business challenges, using modern frameworks and agile delivery." },
+        { "title": "Network & Infrastructure", "description": "Design, installation, and management of enterprise networks — LAN, WAN, wireless, and secure VPN configurations." },
+        { "title": "Cloud Services", "description": "Cloud migration, architecture design, and managed cloud operations across AWS, Azure, and Google Cloud platforms." },
+        { "title": "Cybersecurity", "description": "Vulnerability assessments, security audits, firewall configuration, and employee security awareness training." },
+        { "title": "IT Consulting", "description": "Strategic technology planning, digital transformation roadmaps, and vendor-neutral advice for your IT investments." },
+        { "title": "IT Maintenance & Support", "description": "Proactive monitoring, helpdesk support, and scheduled maintenance to keep your systems running at peak performance." }
+      ]
+    },
+    "cta": {
+      "heading": "Ready to Elevate Your Technology?",
+      "btn": "Talk to Our IT Team"
+    }
+  },
+  "importExport": {
+    "meta": {
+      "title": "Import & Export — Aspak Global Co., Ltd.",
+      "description": "International trade facilitation, sourcing, distribution, and agency services from Bangkok to the world."
+    },
+    "hero": {
+      "label": "Import & Export",
+      "heading": "Thailand to the World —\nThe World to Thailand",
+      "body": "We facilitate seamless cross-border trade, connecting Thai businesses with global suppliers and opening international markets for Thai products."
+    },
+    "services": {
+      "heading": "Trade Services",
+      "items": [
+        { "title": "Consumer Goods Trade", "description": "Sourcing and trading of fast-moving consumer goods across international markets with competitive pricing and reliable supply chains." },
+        { "title": "Sourcing & Procurement", "description": "Identifying, vetting, and managing suppliers across Asia, Europe, and beyond — so you get the best value for every purchase." },
+        { "title": "Distribution Management", "description": "Efficient last-mile and regional distribution networks that get your products where they need to be, on time." },
+        { "title": "Agency & Brokerage", "description": "Representing foreign brands in Thailand and Thai products abroad — acting as your trusted local or regional agent." },
+        { "title": "Trade Documentation", "description": "Complete handling of import/export documentation, customs compliance, and regulatory requirements." },
+        { "title": "Logistics Coordination", "description": "Freight forwarding, shipping coordination, and logistics optimization for sea, air, and land cargo." }
+      ]
+    },
+    "reach": {
+      "heading": "Our Trade Reach",
+      "body": "With active trading relationships spanning over 20 countries, Aspak Global opens doors across Asia, Europe, and beyond.",
+      "regions": ["Southeast Asia", "East Asia", "South Asia", "Europe", "Middle East", "North America"]
+    },
+    "cta": {
+      "heading": "Ready to Trade Globally?",
+      "btn": "Contact Our Trade Team"
+    }
+  },
+  "packaging": {
+    "meta": {
+      "title": "Packaging & Paper — Aspak Global Co., Ltd.",
+      "description": "Paper boxes, corrugated packaging, kraft paper, and plastic packaging solutions for all industries."
+    },
+    "hero": {
+      "label": "Packaging & Paper",
+      "heading": "Packaging Solutions\nThat Protect and Impress",
+      "body": "From corrugated shipping boxes to custom retail packaging and industrial paper products, we supply packaging solutions that meet every industry's needs."
+    },
+    "services": {
+      "heading": "Our Packaging Range",
+      "items": [
+        { "title": "Paper Boxes", "description": "Custom and standard paper boxes for retail, gifting, food service, and industrial applications." },
+        { "title": "Corrugated Packaging", "description": "Single-wall, double-wall, and triple-wall corrugated boxes for shipping and heavy-duty storage." },
+        { "title": "Kraft Paper Products", "description": "Eco-friendly kraft paper bags, wrapping, and liner products suitable for a wide range of industries." },
+        { "title": "Plastic Packaging", "description": "Flexible plastic packaging solutions including poly bags, shrink wrap, and specialized industrial packaging." },
+        { "title": "Pulp & Paper Materials", "description": "Raw and processed pulp and paper materials supplied to manufacturers, printers, and converters." },
+        { "title": "Custom Printing", "description": "Branded packaging with custom printing, embossing, and finishing options to make your products stand out." }
+      ]
+    },
+    "cta": {
+      "heading": "Need a Packaging Solution?",
+      "btn": "Request a Quote"
+    }
+  },
+  "officeSupply": {
+    "meta": {
+      "title": "Office Supply — Aspak Global Co., Ltd.",
+      "description": "Complete office supply solutions including stationery, equipment, computers, and filing systems for Thai businesses."
+    },
+    "hero": {
+      "label": "Office Supply",
+      "heading": "Everything Your\nWorkplace Needs",
+      "body": "From everyday stationery to computers and specialist equipment, Aspak Global is your one-stop source for complete office supply solutions."
+    },
+    "services": {
+      "heading": "Product Categories",
+      "items": [
+        { "title": "Stationery & Writing", "description": "Pens, pencils, markers, notebooks, paper, envelopes, and all everyday writing materials." },
+        { "title": "Office Equipment", "description": "Printers, scanners, shredders, laminators, and specialist office machinery." },
+        { "title": "Ink & Toner", "description": "Original and compatible ink cartridges and toner for all major printer brands." },
+        { "title": "Filing & Storage", "description": "Binders, folders, filing cabinets, document trays, and archiving solutions." },
+        { "title": "Computers & Peripherals", "description": "Laptops, desktops, monitors, keyboards, mice, and IT accessories for the modern office." },
+        { "title": "Facility & Break Room", "description": "Cleaning supplies, coffee essentials, and general facility items to keep your workplace running smoothly." }
+      ]
+    },
+    "cta": {
+      "heading": "Equip Your Office Today",
+      "btn": "Browse Products"
+    }
+  },
+  "cleaning": {
+    "meta": {
+      "title": "Dee Cleaning Company — Aspak Global Co., Ltd.",
+      "description": "Professional cleaning services for offices, factories, hotels, hospitals, and residences across Bangkok."
+    },
+    "hero": {
+      "label": "Cleaning Services",
+      "heading": "Professional Cleaning\nYou Can Trust",
+      "subBrand": "by Dee Cleaning Company",
+      "body": "Dee Cleaning Company delivers reliable, professional cleaning services across Bangkok — from daily office maintenance to deep cleaning, post-construction, and hospital-grade disinfection."
+    },
+    "services": {
+      "heading": "Cleaning Services",
+      "items": [
+        { "title": "Office Cleaning", "description": "Daily, weekly, and periodic deep cleaning for offices of all sizes — keeping your workplace pristine and professional." },
+        { "title": "Factory & Warehouse", "description": "Industrial cleaning services for manufacturing plants, warehouses, and logistics facilities, complying with safety standards." },
+        { "title": "Hotel & Hospitality", "description": "Room turnover, common area maintenance, and housekeeping services tailored to hospitality standards." },
+        { "title": "Hospital & Medical", "description": "Sterile-environment cleaning with hospital-grade disinfectants and strict infection control protocols." },
+        { "title": "Residential & Condo", "description": "Move-in/move-out cleaning, regular housekeeping, and deep cleaning for homes and condominium units." },
+        { "title": "Post-Construction", "description": "Complete post-construction clean-up removing debris, dust, and residues to prepare your space for occupancy." },
+        { "title": "Disinfection Services", "description": "Certified disinfection using EPA-approved solutions — suitable for COVID-19, influenza, and general pathogen control." },
+        { "title": "Event Cleaning", "description": "Before-and-after event cleaning for conferences, exhibitions, and corporate functions." }
+      ]
+    },
+    "deeLink": {
+      "heading": "Visit Dee Cleaning Company",
+      "body": "Explore our dedicated cleaning services website for service packages, pricing, and booking.",
+      "btn": "Visit Dee Cleaning Co."
+    },
+    "cta": {
+      "heading": "Ready for a Cleaner Workplace?",
+      "btn": "Request a Quote"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact Us — Aspak Global Co., Ltd.",
+      "description": "Get in touch with Aspak Global. Visit us in Bangkok or reach us by phone, email, or LINE."
+    },
+    "hero": {
+      "label": "Get in Touch",
+      "heading": "We'd Love to\nHear From You",
+      "body": "Whether you have a business inquiry, want to discuss a project, or simply want to learn more about what we do — our team is ready to help."
+    },
+    "form": {
+      "heading": "Send Us a Message",
+      "name": "Full Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+66 XX XXX XXXX",
+      "service": "Service of Interest",
+      "servicePlaceholder": "Select a service...",
+      "serviceOptions": [
+        { "value": "it-solutions", "label": "IT Solutions" },
+        { "value": "import-export", "label": "Import & Export" },
+        { "value": "packaging", "label": "Packaging & Paper" },
+        { "value": "office-supply", "label": "Office Supply" },
+        { "value": "cleaning", "label": "Cleaning Services" },
+        { "value": "general", "label": "General Inquiry" }
+      ],
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project or inquiry...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Your message has been sent. We'll get back to you within one business day.",
+      "error": "Something went wrong. Please try again or contact us directly.",
+      "validation": {
+        "nameRequired": "Please enter your name.",
+        "emailRequired": "Please enter your email address.",
+        "emailInvalid": "Please enter a valid email address.",
+        "serviceRequired": "Please select a service.",
+        "messageRequired": "Please enter your message."
+      }
+    },
+    "info": {
+      "heading": "Contact Information",
+      "address": {
+        "label": "Head Office",
+        "value": "No. 1, Soi Pracha Uthit 79 Yaek 1, Thung Khru Sub-district, Thung Khru District, Bangkok 10140"
+      },
+      "phone": { "label": "Phone", "value": "+66 2 XXX XXXX" },
+      "email": { "label": "Email", "value": "contact@aspakglobal.com" },
+      "line": { "label": "LINE Official", "value": "@aspakglobal" },
+      "hours": { "label": "Business Hours", "value": "Mon – Fri: 8:30 – 17:30 (ICT)" }
+    },
+    "map": {
+      "heading": "Find Us",
+      "alt": "Aspak Global office location in Thung Khru, Bangkok"
+    }
+  },
+  "footer": {
+    "description": "A Bangkok-based trading and services company delivering integrated solutions across technology, trade, packaging, office supply, and cleaning services.",
+    "services": "Services",
+    "company": "Company",
+    "contact": "Contact",
+    "links": {
+      "about": "About Us",
+      "services": "All Services",
+      "itSolutions": "IT Solutions",
+      "importExport": "Import & Export",
+      "packaging": "Packaging & Paper",
+      "officeSupply": "Office Supply",
+      "cleaning": "Cleaning Services",
+      "contact": "Contact Us",
+      "privacy": "Privacy Policy"
+    },
+    "address": "No. 1, Soi Pracha Uthit 79 Yaek 1, Thung Khru, Bangkok 10140",
+    "copyright": "© {year} Aspak Global Co., Ltd. All rights reserved.",
+    "legalName": "Aspak Global Co., Ltd."
+  },
+  "notFound": {
+    "label": "404",
+    "heading": "Page Not Found",
+    "body": "The page you're looking for doesn't exist or has been moved.",
+    "btn": "Back to Home"
+  }
+}
