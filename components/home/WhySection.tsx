@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -27,6 +27,79 @@ const ICONS = [
     <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/>
   </svg>,
 ];
+
+function WhyCard({ item, icon }: { item: WhyItem; icon: ReactNode }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    gsap.to(card, { rotateY: x * 8, rotateX: -y * 6, duration: 0.35, ease: "power2.out", transformPerspective: 900 });
+    if (glowRef.current) {
+      gsap.to(glowRef.current, {
+        left: e.clientX - rect.left,
+        top: e.clientY - rect.top,
+        opacity: 1,
+        duration: 0.15,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const onMouseLeave = () => {
+    gsap.to(cardRef.current, { rotateY: 0, rotateX: 0, duration: 0.6, ease: "expo.out" });
+    if (glowRef.current) gsap.to(glowRef.current, { opacity: 0, duration: 0.3 });
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      data-card
+      className="group relative flex items-start gap-4 p-5 rounded-2xl overflow-hidden cursor-default"
+      style={{
+        background: "linear-gradient(135deg, rgba(200,216,240,0.12) 0%, rgba(180,200,230,0.07) 100%)",
+        border: "1px solid rgba(200,216,240,0.18)",
+        transformStyle: "preserve-3d",
+        willChange: "transform",
+        backdropFilter: "blur(4px)",
+      }}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      {/* Spotlight glow */}
+      <div ref={glowRef} className="absolute pointer-events-none opacity-0 rounded-full"
+        style={{
+          width: "180px", height: "180px",
+          background: "radial-gradient(circle at center, rgba(201,162,39,0.18) 0%, transparent 65%)",
+          transform: "translate(-50%,-50%)",
+          left: "50%", top: "50%",
+          mixBlendMode: "screen",
+        }}
+      />
+      {/* Top shimmer line on hover */}
+      <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden rounded-full">
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.9) 50%, transparent 80%)", animation: "shimmer-line 1.8s ease-in-out infinite" }} />
+      </div>
+
+      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-[--gold-400] transition-all duration-400 group-hover:scale-110"
+        style={{ background: "rgba(201,162,39,0.12)", border: "1px solid rgba(201,162,39,0.3)" }}>
+        {icon}
+      </div>
+      <div>
+        <h3 className="font-display font-semibold text-base mb-1.5 transition-colors duration-300 group-hover:text-[--gold-300]"
+          style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.4)" }}>
+          {item.title}
+        </h3>
+        <p className="text-white/70 text-sm leading-relaxed max-w-none">{item.description}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function WhySection() {
   const t = useTranslations("home.why");
@@ -87,37 +160,9 @@ export default function WhySection() {
           </div>
 
           {/* Right — feature list */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
             {items.map((item, i) => (
-              <div
-                key={i}
-                data-card
-                className="group flex items-start gap-4 p-5 rounded-xl transition-all duration-500 cursor-default"
-                style={{
-                  background: "rgba(200,216,240,0.04)",
-                  border: "1px solid rgba(200,216,240,0.1)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background = "rgba(201,162,39,0.07)";
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,162,39,0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background = "rgba(200,216,240,0.04)";
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(200,216,240,0.1)";
-                }}
-              >
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 text-[--gold-500]"
-                  style={{ background: "rgba(201,162,39,0.1)", border: "1px solid rgba(201,162,39,0.2)" }}>
-                  {ICONS[i % ICONS.length]}
-                </div>
-                <div>
-                  <h3 className="font-display font-semibold text-base mb-1 group-hover:text-[--gold-400] transition-colors duration-300"
-                    style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.4)" }}>
-                    {item.title}
-                  </h3>
-                  <p className="text-white/70 text-sm leading-relaxed max-w-none">{item.description}</p>
-                </div>
-              </div>
+              <WhyCard key={i} item={item} icon={ICONS[i % ICONS.length]} />
             ))}
           </div>
         </div>
