@@ -129,36 +129,33 @@ export default function Header() {
           {[
             { label: t("home"), href: "/" },
             { label: t("about"), href: "/about" },
-          ].map(({ label, href }) => (
-            <Link key={href} href={localHref(href)}
-              className={`relative px-4 py-2 text-sm font-semibold rounded-lg group transition-colors duration-200 ${
-                isActive(href) && (href !== "/" || strippedPath === "/")
-                  ? "text-[--gold-400]"
-                  : "text-white hover:text-[--gold-300]"
-              }`}>
-              {/* Underline slide-in */}
-              <span className={`absolute bottom-1 left-4 right-4 h-px rounded-full transition-all duration-300 origin-left ${
-                isActive(href) && (href !== "/" || strippedPath === "/")
-                  ? "scale-x-100 bg-[--gold-400]"
-                  : "scale-x-0 bg-[--gold-400] group-hover:scale-x-100"
-              }`} />
-              {label}
-            </Link>
-          ))}
+          ].map(({ label, href }) => {
+            const active = isActive(href) && (href !== "/" || strippedPath === "/");
+            return (
+              <Link key={href} href={localHref(href)}
+                className="relative px-4 py-2 text-sm font-semibold rounded-lg group transition-all duration-250"
+                style={{ color: active ? "#E8C766" : "#c8d8f0" }}
+                onMouseEnter={e => { if (!active) (e.currentTarget as HTMLElement).style.color = "#f0d060"; (e.currentTarget as HTMLElement).style.background = "rgba(201,162,39,0.07)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = active ? "#E8C766" : "#c8d8f0"; (e.currentTarget as HTMLElement).style.background = "transparent"; }}
+              >
+                <span className={`absolute bottom-1 left-4 right-4 h-px rounded-full transition-all duration-300 origin-left bg-[--gold-400] ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
+                {label}
+              </Link>
+            );
+          })}
 
           {/* Services dropdown */}
           <div ref={dropdownRef} className="relative">
             <button
               onClick={() => setServicesOpen((v) => !v)}
-              className={`relative flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg group transition-colors duration-200 ${
-                isActive("/services") ? "text-[--gold-400]" : "text-white hover:text-[--gold-300]"
-              }`}
+              className="relative flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg group transition-all duration-250"
+              style={{ color: isActive("/services") ? "#E8C766" : "#c8d8f0" }}
+              onMouseEnter={e => { if (!isActive("/services")) (e.currentTarget as HTMLElement).style.color = "#f0d060"; (e.currentTarget as HTMLElement).style.background = "rgba(201,162,39,0.07)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = isActive("/services") ? "#E8C766" : "#c8d8f0"; (e.currentTarget as HTMLElement).style.background = "transparent"; }}
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
-              <span className={`absolute bottom-1 left-4 right-4 h-px rounded-full transition-all duration-300 origin-left ${
-                isActive("/services") ? "scale-x-100 bg-[--gold-400]" : "scale-x-0 bg-[--gold-400] group-hover:scale-x-100"
-              }`} />
+              <span className={`absolute bottom-1 left-4 right-4 h-px rounded-full transition-all duration-300 origin-left bg-[--gold-400] ${isActive("/services") ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
               {t("services")}
               <svg
                 className={`w-3 h-3 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
@@ -200,15 +197,20 @@ export default function Header() {
             </div>
           </div>
 
-          <Link href={localHref("/contact")}
-            className={`relative px-4 py-2 text-sm font-semibold rounded-lg group transition-colors duration-200 ${
-              isActive("/contact") ? "text-[--gold-400]" : "text-white hover:text-[--gold-300]"
-            }`}>
-            <span className={`absolute bottom-1 left-4 right-4 h-px rounded-full transition-all duration-300 origin-left ${
-              isActive("/contact") ? "scale-x-100 bg-[--gold-400]" : "scale-x-0 bg-[--gold-400] group-hover:scale-x-100"
-            }`} />
-            {t("contact")}
-          </Link>
+          {(() => {
+            const active = isActive("/contact");
+            return (
+              <Link href={localHref("/contact")}
+                className="relative px-4 py-2 text-sm font-semibold rounded-lg group transition-all duration-250"
+                style={{ color: active ? "#E8C766" : "#c8d8f0" }}
+                onMouseEnter={e => { if (!active) (e.currentTarget as HTMLElement).style.color = "#f0d060"; (e.currentTarget as HTMLElement).style.background = "rgba(201,162,39,0.07)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = active ? "#E8C766" : "#c8d8f0"; (e.currentTarget as HTMLElement).style.background = "transparent"; }}
+              >
+                <span className={`absolute bottom-1 left-4 right-4 h-px rounded-full transition-all duration-300 origin-left bg-[--gold-400] ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
+                {t("contact")}
+              </Link>
+            );
+          })()}
         </nav>
 
         {/* ── Right: lang toggle + CTA + hamburger ── */}
