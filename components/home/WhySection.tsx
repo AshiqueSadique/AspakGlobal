@@ -86,8 +86,8 @@ function WhyCard({ item, icon }: { item: WhyItem; icon: ReactNode }) {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.9) 50%, transparent 80%)", animation: "shimmer-line 1.8s ease-in-out infinite" }} />
       </div>
 
-      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-[--gold-400] transition-all duration-400 group-hover:scale-110"
-        style={{ background: "rgba(201,162,39,0.12)", border: "1px solid rgba(201,162,39,0.3)" }}>
+      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-400 group-hover:scale-110"
+        style={{ background: "rgba(201,162,39,0.25)", border: "1px solid rgba(201,162,39,0.6)", color: "#f0d060" }}>
         {icon}
       </div>
       <div>
