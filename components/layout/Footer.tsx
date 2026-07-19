@@ -18,7 +18,7 @@ export default function Footer() {
       {/* Gold divider top */}
       <div className="gold-divider" />
 
-      <div className="container" style={{ paddingTop: "calc(4rem + 8px)", paddingBottom: "4rem" }}>
+      <div className="container" style={{ paddingTop: "calc(4rem + 3px)", paddingBottom: "4rem" }}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-1">
