@@ -37,11 +37,11 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
 };
 
 const CARD_COLORS = [
-  { from: "#ffffff", border: "rgba(201,162,39,0.7)", glow: "rgba(201,162,39,0.15)" },
-  { from: "#f0f4ff", border: "rgba(100,150,255,0.5)", glow: "rgba(36,95,168,0.12)" },
-  { from: "#ffffff", border: "rgba(201,162,39,0.7)", glow: "rgba(201,162,39,0.15)" },
-  { from: "#f0f4ff", border: "rgba(100,150,255,0.5)", glow: "rgba(36,95,168,0.12)" },
-  { from: "#ffffff", border: "rgba(201,162,39,0.7)", glow: "rgba(201,162,39,0.15)" },
+  { from: "#e8ecf2", border: "rgba(201,162,39,0.5)", glow: "rgba(201,162,39,0.22)" },
+  { from: "#e4eaf2", border: "rgba(150,180,220,0.5)", glow: "rgba(150,180,220,0.2)" },
+  { from: "#e8ecf2", border: "rgba(201,162,39,0.5)", glow: "rgba(201,162,39,0.22)" },
+  { from: "#e4eaf2", border: "rgba(150,180,220,0.5)", glow: "rgba(150,180,220,0.2)" },
+  { from: "#e8ecf2", border: "rgba(201,162,39,0.5)", glow: "rgba(201,162,39,0.22)" },
 ];
 
 type ServiceItem = { id: string; title: string; description: string; icon: string };
@@ -69,11 +69,14 @@ function TiltCard({ item, idx, locale, learnMore }: {
     });
 
     if (glowRef.current) {
+      const cursorX = e.clientX - rect.left;
+      const cursorY = e.clientY - rect.top;
       gsap.to(glowRef.current, {
-        x: (x + 0.5) * 100 + "%",
-        y: (y + 0.5) * 100 + "%",
+        left: cursorX,
+        top: cursorY,
         opacity: 1,
-        duration: 0.3,
+        duration: 0.15,
+        ease: "power2.out",
       });
     }
   };
@@ -91,7 +94,7 @@ function TiltCard({ item, idx, locale, learnMore }: {
       href={`/${locale}/services/${item.id}`}
       className="relative flex flex-col rounded-2xl p-7 overflow-hidden group cursor-pointer"
       style={{
-        background: `linear-gradient(145deg, ${colors.from} 0%, #dde8ff 100%)`,
+        background: `linear-gradient(160deg, ${colors.from} 0%, #d0d8e8 100%)`,
         border: `1px solid ${colors.border}`,
         transformStyle: "preserve-3d",
         transition: "box-shadow 0.4s ease",
@@ -100,13 +103,15 @@ function TiltCard({ item, idx, locale, learnMore }: {
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
-      {/* Glow blob that follows cursor */}
-      <div ref={glowRef} className="absolute pointer-events-none opacity-0 rounded-full"
+      {/* Spotlight glow — tracks cursor exactly */}
+      <div ref={glowRef} className="absolute pointer-events-none opacity-0"
         style={{
-          width: "200px", height: "200px",
-          background: `radial-gradient(circle, ${colors.glow} 0%, transparent 70%)`,
+          width: "160px", height: "160px",
+          borderRadius: "50%",
+          background: `radial-gradient(circle at center, ${colors.glow} 0%, transparent 65%)`,
           transform: "translate(-50%, -50%)",
           left: "50%", top: "50%",
+          mixBlendMode: "multiply",
         }}
       />
 
