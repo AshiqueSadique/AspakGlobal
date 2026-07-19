@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function IntroSection() {
   const t = useTranslations("home.intro");
   const ref = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -20,64 +21,134 @@ export default function IntroSection() {
     const left = el.querySelectorAll("[data-left]");
     const right = el.querySelector("[data-right]");
 
-    gsap.set(left, { opacity: 0, y: 30 });
-    gsap.set(right, { opacity: 0, x: 40 });
+    gsap.set(left, { opacity: 0, y: 32 });
+    gsap.set(right, { opacity: 0, scale: 0.94 });
 
     ScrollTrigger.create({
       trigger: el,
-      start: "top 82%",
+      start: "top 80%",
       onEnter: () => {
-        gsap.to(left, { opacity: 1, y: 0, duration: 1.3, stagger: 0.18, ease: "expo.out" });
-        gsap.to(right, { opacity: 1, x: 0, duration: 1.5, ease: "expo.out", delay: 0.25 });
+        gsap.to(left, { opacity: 1, y: 0, duration: 1.3, stagger: 0.15, ease: "expo.out" });
+        gsap.to(right, { opacity: 1, scale: 1, duration: 1.5, ease: "expo.out", delay: 0.2 });
       },
       once: true,
     });
+
+    // Slow float on the logo
+    if (logoRef.current) {
+      gsap.to(logoRef.current, {
+        y: -12, duration: 4, yoyo: true, repeat: -1, ease: "sine.inOut",
+      });
+    }
   }, []);
 
   return (
-    <section ref={ref} className="section-pad bg-white">
-      <div className="container">
+    <section
+      ref={ref}
+      className="section-pad relative overflow-hidden"
+      style={{ background: "linear-gradient(180deg, #050d1a 0%, #091628 100%)" }}
+    >
+      {/* Side accent */}
+      <div className="absolute right-0 top-0 bottom-0 w-px"
+        style={{ background: "linear-gradient(to bottom, transparent, rgba(201,162,39,0.25) 30%, rgba(201,162,39,0.25) 70%, transparent)" }} />
+
+      <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Text */}
-          <div>
-            <span data-left className="section-label block mb-4">{t("label")}</span>
-            <h2 data-left className="font-display font-bold text-[--navy-900] mb-6">{t("heading")}</h2>
-            <p data-left className="text-[--color-text-muted] leading-relaxed mb-8 max-w-none">{t("body")}</p>
+
+          {/* Visual — left */}
+          <div data-right className="relative flex items-center justify-center order-2 lg:order-1">
+            {/* Outer glow ring */}
+            <div className="absolute rounded-full pointer-events-none"
+              style={{
+                width: "340px", height: "340px",
+                background: "radial-gradient(circle, rgba(201,162,39,0.08) 0%, transparent 70%)",
+                animation: "ring-pulse 5s ease-in-out infinite alternate",
+              }}
+            />
+            {/* Spinning ring border */}
+            <div className="absolute rounded-full pointer-events-none"
+              style={{
+                width: "300px", height: "300px",
+                border: "1px solid rgba(201,162,39,0.15)",
+                animation: "spin-slow 20s linear infinite",
+              }}
+            />
+            <div className="absolute rounded-full pointer-events-none"
+              style={{
+                width: "240px", height: "240px",
+                border: "1px solid rgba(36,95,168,0.2)",
+                animation: "spin-slow 14s linear infinite reverse",
+              }}
+            />
+
+            {/* Logo floating */}
+            <div ref={logoRef} className="relative z-10">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/aspak-logo.png"
+                alt="Aspak Global"
+                width={200}
+                height={160}
+                className="w-44 md:w-52 h-auto object-contain"
+                style={{
+                  mixBlendMode: "screen",
+                  filter: "drop-shadow(0 0 50px rgba(201,162,39,0.25)) drop-shadow(0 0 20px rgba(201,162,39,0.15))",
+                }}
+              />
+            </div>
+
+            {/* Orbit dots */}
+            {[0, 72, 144, 216, 288].map((deg) => (
+              <div key={deg} className="absolute pointer-events-none"
+                style={{
+                  width: "6px", height: "6px", borderRadius: "50%",
+                  background: "#C9A227",
+                  top: `calc(50% + ${Math.sin((deg * Math.PI) / 180) * 150}px - 3px)`,
+                  left: `calc(50% + ${Math.cos((deg * Math.PI) / 180) * 150}px - 3px)`,
+                  opacity: 0.4,
+                  animation: `orbit-dot 6s ${deg / 60}s ease-in-out infinite alternate`,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Text — right */}
+          <div className="order-1 lg:order-2">
+            <span data-left className="section-label text-[--gold-400] block mb-5">{t("label")}</span>
+            <h2 data-left className="font-display font-bold text-white mb-6"
+              style={{ fontSize: "clamp(1.9rem, 3.5vw, 3rem)", lineHeight: 1.15 }}>
+              {t("heading")}
+            </h2>
+            <div data-left className="h-px w-14 rounded-full mb-7"
+              style={{ background: "linear-gradient(90deg, #C9A227, transparent)" }} />
+            <p data-left className="text-white/45 leading-relaxed mb-8 max-w-none text-base">
+              {t("body")}
+            </p>
             <div data-left className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[--gold-100] flex items-center justify-center">
-                <svg className="w-5 h-5 text-[--gold-600]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                style={{ background: "rgba(201,162,39,0.12)", border: "1px solid rgba(201,162,39,0.3)" }}>
+                <svg className="w-4 h-4 text-[--gold-500]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
                 </svg>
               </div>
-              <span className="text-sm font-medium text-[--navy-700]">{t("since")}</span>
-            </div>
-          </div>
-
-          {/* Visual */}
-          <div data-right className="relative h-80 lg:h-96 rounded-2xl overflow-hidden bg-[--navy-800]">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg viewBox="0 0 400 300" className="w-full h-full opacity-20" aria-hidden="true">
-                <rect x="20" y="200" width="40" height="100" fill="#C9A227" rx="2"/>
-                <rect x="70" y="160" width="30" height="140" fill="#E8C766" rx="2"/>
-                <rect x="110" y="180" width="50" height="120" fill="#C9A227" rx="2"/>
-                <rect x="170" y="120" width="60" height="180" fill="#E8C766" rx="2"/>
-                <rect x="240" y="150" width="40" height="150" fill="#C9A227" rx="2"/>
-                <rect x="290" y="170" width="35" height="130" fill="#E8C766" rx="2"/>
-                <rect x="335" y="190" width="45" height="110" fill="#C9A227" rx="2"/>
-                <circle cx="200" cy="140" r="60" stroke="#C9A227" strokeWidth="1" fill="none" opacity="0.5"/>
-                <ellipse cx="200" cy="140" rx="30" ry="60" stroke="#E8C766" strokeWidth="1" fill="none" opacity="0.5"/>
-                <line x1="140" y1="140" x2="260" y2="140" stroke="#C9A227" strokeWidth="1" opacity="0.3"/>
-              </svg>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-br from-[--navy-900]/60 to-[--navy-950]/80" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="text-xs text-[--gold-400] tracking-widest uppercase mb-1 font-semibold">Aspak Global</div>
-              <div className="text-white font-display font-bold text-xl">Bangkok, Thailand</div>
+              <span className="text-sm text-white/40 font-medium">{t("since")}</span>
             </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes ring-pulse {
+          from { transform: scale(1); opacity: 0.6; }
+          to { transform: scale(1.12); opacity: 1; }
+        }
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes orbit-dot {
+          from { opacity: 0.2; transform: scale(0.7); }
+          to { opacity: 0.6; transform: scale(1.3); }
+        }
+      `}</style>
     </section>
   );
 }
