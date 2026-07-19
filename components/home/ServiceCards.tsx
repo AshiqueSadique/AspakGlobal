@@ -37,11 +37,11 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
 };
 
 const CARD_COLORS = [
-  { from: "#1a3f6f", border: "rgba(201,162,39,0.45)", glow: "rgba(201,162,39,0.15)" },
-  { from: "#163460", border: "rgba(100,180,255,0.35)", glow: "rgba(36,95,168,0.2)" },
-  { from: "#1a3f6f", border: "rgba(201,162,39,0.45)", glow: "rgba(201,162,39,0.15)" },
-  { from: "#163460", border: "rgba(100,180,255,0.35)", glow: "rgba(36,95,168,0.2)" },
-  { from: "#1a3f6f", border: "rgba(201,162,39,0.45)", glow: "rgba(201,162,39,0.15)" },
+  { from: "#2a5fa0", border: "rgba(201,162,39,0.6)", glow: "rgba(201,162,39,0.18)" },
+  { from: "#224e88", border: "rgba(100,180,255,0.5)", glow: "rgba(36,95,168,0.25)" },
+  { from: "#2a5fa0", border: "rgba(201,162,39,0.6)", glow: "rgba(201,162,39,0.18)" },
+  { from: "#224e88", border: "rgba(100,180,255,0.5)", glow: "rgba(36,95,168,0.25)" },
+  { from: "#2a5fa0", border: "rgba(201,162,39,0.6)", glow: "rgba(201,162,39,0.18)" },
 ];
 
 type ServiceItem = { id: string; title: string; description: string; icon: string };
@@ -91,7 +91,7 @@ function TiltCard({ item, idx, locale, learnMore }: {
       href={`/${locale}/services/${item.id}`}
       className="relative flex flex-col rounded-2xl p-7 overflow-hidden group cursor-pointer"
       style={{
-        background: `linear-gradient(145deg, ${colors.from} 0%, #0d2044 100%)`,
+        background: `linear-gradient(145deg, ${colors.from} 0%, #1a3a6a 100%)`,
         border: `1px solid ${colors.border}`,
         transformStyle: "preserve-3d",
         transition: "box-shadow 0.4s ease",
@@ -187,7 +187,7 @@ export default function ServiceCards() {
     <section
       ref={sectionRef}
       className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #050d1a 0%, #091628 50%, #050d1a 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0d1e38 0%, #112244 50%, #0d1e38 100%)" }}
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none" style={{
