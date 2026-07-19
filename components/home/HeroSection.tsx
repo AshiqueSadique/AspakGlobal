@@ -257,7 +257,7 @@ export default function HeroSection() {
         </div>
 
         {/* Headline — large, centred */}
-        <div className="mb-6 space-y-0">
+        <div className="mb-8 space-y-0">
           {lines.map((line, i) => (
             <div key={i} data-r="line" className="overflow-visible" style={{ opacity: 0 }}>
               <h1
@@ -283,25 +283,46 @@ export default function HeroSection() {
           ))}
         </div>
 
-        {/* Gold divider wave */}
-        <div data-r="sub" className="mb-6" style={{ opacity: 0 }}>
-          <svg viewBox="0 0 320 12" className="w-64 h-3 mx-auto" fill="none" aria-hidden>
-            <path d="M0 6 C53 1, 107 11, 160 6 C213 1, 267 11, 320 6"
-              stroke="url(#hg)" strokeWidth="1.5" strokeLinecap="round"/>
-            <defs>
-              <linearGradient id="hg" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#C9A227" stopOpacity="0"/>
-                <stop offset="25%" stopColor="#C9A227" stopOpacity="0.9"/>
-                <stop offset="50%" stopColor="#F0D060"/>
-                <stop offset="75%" stopColor="#C9A227" stopOpacity="0.9"/>
-                <stop offset="100%" stopColor="#C9A227" stopOpacity="0"/>
-              </linearGradient>
-            </defs>
-          </svg>
+        {/* Elegant accent — diamond + lines + travelling spark */}
+        <div data-r="sub" className="flex items-center justify-center gap-3 mb-10" style={{ opacity: 0 }}>
+          {/* Left line with fade */}
+          <div className="relative h-px w-24 overflow-hidden rounded-full">
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, transparent, rgba(201,162,39,0.6))" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%)", animation: "spark-l 3s ease-in-out infinite 0.5s" }} />
+          </div>
+          {/* Diamond gem */}
+          <div className="relative flex items-center justify-center" style={{ width: 20, height: 20 }}>
+            <div style={{
+              width: 8, height: 8,
+              background: "linear-gradient(135deg, #F0D060, #C9A227)",
+              transform: "rotate(45deg)",
+              boxShadow: "0 0 12px rgba(201,162,39,0.8), 0 0 24px rgba(201,162,39,0.4)",
+              animation: "gem-pulse 2.5s ease-in-out infinite",
+            }} />
+          </div>
+          {/* Centre word */}
+          <span style={{ color: "#C9A227", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" }}>
+            Aspak Global
+          </span>
+          {/* Right diamond */}
+          <div className="relative flex items-center justify-center" style={{ width: 20, height: 20 }}>
+            <div style={{
+              width: 8, height: 8,
+              background: "linear-gradient(135deg, #C9A227, #F0D060)",
+              transform: "rotate(45deg)",
+              boxShadow: "0 0 12px rgba(201,162,39,0.8), 0 0 24px rgba(201,162,39,0.4)",
+              animation: "gem-pulse 2.5s ease-in-out infinite 1.25s",
+            }} />
+          </div>
+          {/* Right line */}
+          <div className="relative h-px w-24 overflow-hidden rounded-full">
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to left, transparent, rgba(201,162,39,0.6))" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.9) 50%, transparent 100%)", animation: "spark-r 3s ease-in-out infinite 1.5s" }} />
+          </div>
         </div>
 
         {/* Subheadline */}
-        <p data-r="sub" className="text-white/50 text-lg leading-[1.85] mb-12 max-w-[46ch]" style={{ opacity: 0 }}>
+        <p data-r="sub" className="text-lg leading-[1.85] mb-12 max-w-[46ch]" style={{ opacity: 0, color: "#b8cce0" }}>
           {t("subheadline")}
         </p>
 
@@ -340,6 +361,22 @@ export default function HeroSection() {
           30% { opacity: 1; }
           70% { opacity: 1; }
           100% { transform: translateY(100%); opacity: 0; }
+        }
+        @keyframes spark-l {
+          0%   { transform: translateX(-120%); opacity: 0; }
+          15%  { opacity: 1; }
+          85%  { opacity: 1; }
+          100% { transform: translateX(120%); opacity: 0; }
+        }
+        @keyframes spark-r {
+          0%   { transform: translateX(-120%); opacity: 0; }
+          15%  { opacity: 1; }
+          85%  { opacity: 1; }
+          100% { transform: translateX(120%); opacity: 0; }
+        }
+        @keyframes gem-pulse {
+          0%, 100% { transform: rotate(45deg) scale(1); box-shadow: 0 0 12px rgba(201,162,39,0.8), 0 0 24px rgba(201,162,39,0.4); }
+          50%       { transform: rotate(45deg) scale(1.25); box-shadow: 0 0 20px rgba(240,208,96,1), 0 0 40px rgba(201,162,39,0.6); }
         }
       `}</style>
     </section>
