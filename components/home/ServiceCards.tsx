@@ -205,11 +205,31 @@ export default function ServiceCards() {
       <div className="container relative z-10">
         <div ref={headingRef} className="text-center mb-16">
           <span data-h className="section-label text-[--gold-400]">{t("label")}</span>
-          <h2 data-h className="mt-3 font-display font-bold text-white whitespace-pre-line" style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)" }}>
+          <h2 data-h className="mt-3 font-display font-bold whitespace-pre-line" style={{
+            fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+            color: "#f0f4ff",
+            textShadow: "0 0 40px rgba(201,162,39,0.15)",
+          }}>
             {t("heading")}
           </h2>
-          <div data-h className="h-px w-20 mx-auto mt-5 rounded-full"
-            style={{ background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
+          {/* Shimmery gold border */}
+          <div data-h className="relative mx-auto mt-6 h-px w-48 overflow-hidden rounded-full">
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(90deg, transparent 0%, #C9A227 30%, #F0D060 50%, #C9A227 70%, transparent 100%)",
+            }} />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)",
+              animation: "shimmer-line 2.5s ease-in-out infinite",
+            }} />
+          </div>
+          <style>{`
+            @keyframes shimmer-line {
+              0% { transform: translateX(-100%); }
+              100% { transform: translateX(100%); }
+            }
+          `}</style>
         </div>
 
         <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
