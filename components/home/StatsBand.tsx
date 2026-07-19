@@ -111,7 +111,7 @@ export default function StatsBand() {
               <div data-line className="h-px w-12 mx-auto mb-3 rounded-full"
                 style={{ background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
 
-              <div data-label className="text-white/70 text-sm font-medium tracking-wide leading-snug">
+              <div data-label className="text-sm font-medium tracking-wide leading-snug" style={{ color: "#b8cce0" }}>
                 {item.label}
               </div>
             </div>

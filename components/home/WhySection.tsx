@@ -95,7 +95,7 @@ function WhyCard({ item, icon }: { item: WhyItem; icon: ReactNode }) {
           style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.4)" }}>
           {item.title}
         </h3>
-        <p className="text-white/70 text-sm leading-relaxed max-w-none">{item.description}</p>
+        <p className="text-sm leading-relaxed max-w-none" style={{ color: "#b8cce0" }}>{item.description}</p>
       </div>
     </div>
   );

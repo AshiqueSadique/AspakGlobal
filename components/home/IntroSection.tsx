@@ -123,7 +123,7 @@ export default function IntroSection() {
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, #C9A227, transparent)" }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)", animation: "shimmer-line 2.5s ease-in-out infinite" }} />
             </div>
-            <p data-left className="text-white/70 leading-relaxed mb-8 max-w-none text-base">
+            <p data-left className="leading-relaxed mb-8 max-w-none text-base" style={{ color: "#b8cce0" }}>
               {t("body")}
             </p>
             <div data-left className="flex items-center gap-3">
@@ -134,7 +134,7 @@ export default function IntroSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
                 </svg>
               </div>
-              <span className="text-sm text-white/70 font-medium">{t("since")}</span>
+              <span className="text-sm font-medium" style={{ color: "#b8cce0" }}>{t("since")}</span>
             </div>
           </div>
         </div>

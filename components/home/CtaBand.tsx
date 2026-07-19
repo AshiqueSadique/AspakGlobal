@@ -86,7 +86,7 @@ export default function CtaBand() {
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)", animation: "shimmer-line 2.5s ease-in-out infinite" }} />
         </div>
 
-        <p data-c className="text-white/70 text-lg leading-relaxed mb-12 max-w-xl mx-auto">
+        <p data-c className="text-lg leading-relaxed mb-12 max-w-xl mx-auto" style={{ color: "#b8cce0" }}>
           {t("body")}
         </p>
 
