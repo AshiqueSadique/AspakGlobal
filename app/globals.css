@@ -152,7 +152,7 @@ a {
 /* ─── Gold divider motif ─────────────────────────────────────── */
 .gold-divider {
   width: 100%;
-  height: 3px;
+  height: 5px;
   background: linear-gradient(90deg,
     transparent 0%,
     var(--gold-600) 15%,

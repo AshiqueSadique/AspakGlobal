@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="gold-divider-shimmer" />
       </div>
 
-      <div className="container" style={{ paddingTop: "calc(4rem + 3px)", paddingBottom: "4rem" }}>
+      <div className="container" style={{ paddingTop: "1.5rem", paddingBottom: "4rem" }}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-1">
