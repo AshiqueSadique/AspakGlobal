@@ -16,7 +16,9 @@ export default function Footer() {
   return (
     <footer style={{ background: "linear-gradient(180deg, #eef0f4 0%, #e8eaef 100%)", color: "#2a3a52" }}>
       {/* Gold divider top */}
-      <div className="gold-divider" />
+      <div className="gold-divider">
+        <div className="gold-divider-shimmer" />
+      </div>
 
       <div className="container" style={{ paddingTop: "calc(4rem + 3px)", paddingBottom: "4rem" }}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">

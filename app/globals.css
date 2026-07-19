@@ -152,15 +152,17 @@ a {
 /* ─── Gold divider motif ─────────────────────────────────────── */
 .gold-divider {
   width: 100%;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg,
     transparent 0%,
-    var(--gold-600) 20%,
+    var(--gold-600) 15%,
     var(--gold-400) 50%,
-    var(--gold-600) 80%,
+    var(--gold-600) 85%,
     transparent 100%
   );
   position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(201,162,39,0.55), 0 0 24px rgba(201,162,39,0.22);
 }
 
 .gold-divider::before,
@@ -169,13 +171,34 @@ a {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  background: var(--gold-500);
+  width: 7px;
+  height: 7px;
+  background: var(--gold-400);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  box-shadow: 0 0 6px rgba(201,162,39,0.9);
+  z-index: 2;
 }
 .gold-divider::before { left: calc(20% - 3px); }
 .gold-divider::after  { right: calc(20% - 3px); }
+
+/* travelling shimmer spark — add <div class="gold-divider-shimmer"> inside .gold-divider */
+.gold-divider-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.0) 35%,
+    rgba(255,255,255,0.95) 50%,
+    rgba(255,255,255,0.0) 65%,
+    transparent 100%
+  );
+  animation: gold-divider-spark 3s ease-in-out infinite;
+}
+
+@keyframes gold-divider-spark {
+  0%   { transform: translateX(-150%); }
+  100% { transform: translateX(150%); }
+}
 
 /* ─── Buttons ────────────────────────────────────────────────── */
 .btn-primary {
