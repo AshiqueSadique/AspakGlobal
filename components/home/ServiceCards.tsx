@@ -37,11 +37,11 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
 };
 
 const CARD_COLORS = [
-  { from: "#0d2b52", border: "rgba(201,162,39,0.3)", glow: "rgba(201,162,39,0.12)" },
-  { from: "#0a2240", border: "rgba(100,180,255,0.25)", glow: "rgba(36,95,168,0.15)" },
-  { from: "#0d2b52", border: "rgba(201,162,39,0.3)", glow: "rgba(201,162,39,0.12)" },
-  { from: "#0a2240", border: "rgba(100,180,255,0.25)", glow: "rgba(36,95,168,0.15)" },
-  { from: "#0d2b52", border: "rgba(201,162,39,0.3)", glow: "rgba(201,162,39,0.12)" },
+  { from: "#1a3f6f", border: "rgba(201,162,39,0.45)", glow: "rgba(201,162,39,0.15)" },
+  { from: "#163460", border: "rgba(100,180,255,0.35)", glow: "rgba(36,95,168,0.2)" },
+  { from: "#1a3f6f", border: "rgba(201,162,39,0.45)", glow: "rgba(201,162,39,0.15)" },
+  { from: "#163460", border: "rgba(100,180,255,0.35)", glow: "rgba(36,95,168,0.2)" },
+  { from: "#1a3f6f", border: "rgba(201,162,39,0.45)", glow: "rgba(201,162,39,0.15)" },
 ];
 
 type ServiceItem = { id: string; title: string; description: string; icon: string };
@@ -91,7 +91,7 @@ function TiltCard({ item, idx, locale, learnMore }: {
       href={`/${locale}/services/${item.id}`}
       className="relative flex flex-col rounded-2xl p-7 overflow-hidden group cursor-pointer"
       style={{
-        background: `linear-gradient(145deg, ${colors.from} 0%, #050d1a 100%)`,
+        background: `linear-gradient(145deg, ${colors.from} 0%, #0d2044 100%)`,
         border: `1px solid ${colors.border}`,
         transformStyle: "preserve-3d",
         transition: "box-shadow 0.4s ease",
@@ -126,7 +126,7 @@ function TiltCard({ item, idx, locale, learnMore }: {
       </div>
 
       {/* Number */}
-      <div className="absolute top-6 right-7 font-display font-bold opacity-10 text-white"
+      <div className="absolute top-6 right-7 font-display font-bold opacity-20 text-white"
         style={{ fontSize: "clamp(2.5rem, 3vw, 3.5rem)" }}>
         {String(idx + 1).padStart(2, "0")}
       </div>
@@ -134,11 +134,11 @@ function TiltCard({ item, idx, locale, learnMore }: {
       <h3 className="font-display font-bold text-white text-xl mb-3 group-hover:text-[--gold-400] transition-colors duration-300">
         {item.title}
       </h3>
-      <p className="text-white/45 text-sm leading-relaxed flex-1 mb-6 max-w-none">
+      <p className="text-white/75 text-sm leading-relaxed flex-1 mb-6 max-w-none">
         {item.description}
       </p>
 
-      <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-[--gold-600] group-hover:text-[--gold-400] transition-colors duration-300">
+      <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-[--gold-400] group-hover:text-[--gold-300] transition-colors duration-300">
         {learnMore}
         <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
