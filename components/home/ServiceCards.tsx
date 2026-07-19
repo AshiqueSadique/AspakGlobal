@@ -207,8 +207,9 @@ export default function ServiceCards() {
           <span data-h className="section-label text-[--gold-400]">{t("label")}</span>
           <h2 data-h className="mt-3 font-display font-bold whitespace-pre-line" style={{
             fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
-            color: "#f0f4ff",
-            textShadow: "0 0 40px rgba(201,162,39,0.15)",
+            color: "#c8d8f0",
+            WebkitTextStroke: "0.5px rgba(201,162,39,0.55)",
+            textShadow: "0 0 60px rgba(201,162,39,0.12), 0 2px 8px rgba(0,0,0,0.3)",
           }}>
             {t("heading")}
           </h2>
