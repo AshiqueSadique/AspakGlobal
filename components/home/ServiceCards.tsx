@@ -37,11 +37,11 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
 };
 
 const CARD_COLORS = [
-  { from: "#2a5fa0", border: "rgba(201,162,39,0.6)", glow: "rgba(201,162,39,0.18)" },
-  { from: "#224e88", border: "rgba(100,180,255,0.5)", glow: "rgba(36,95,168,0.25)" },
-  { from: "#2a5fa0", border: "rgba(201,162,39,0.6)", glow: "rgba(201,162,39,0.18)" },
-  { from: "#224e88", border: "rgba(100,180,255,0.5)", glow: "rgba(36,95,168,0.25)" },
-  { from: "#2a5fa0", border: "rgba(201,162,39,0.6)", glow: "rgba(201,162,39,0.18)" },
+  { from: "#ffffff", border: "rgba(201,162,39,0.7)", glow: "rgba(201,162,39,0.15)" },
+  { from: "#f0f4ff", border: "rgba(100,150,255,0.5)", glow: "rgba(36,95,168,0.12)" },
+  { from: "#ffffff", border: "rgba(201,162,39,0.7)", glow: "rgba(201,162,39,0.15)" },
+  { from: "#f0f4ff", border: "rgba(100,150,255,0.5)", glow: "rgba(36,95,168,0.12)" },
+  { from: "#ffffff", border: "rgba(201,162,39,0.7)", glow: "rgba(201,162,39,0.15)" },
 ];
 
 type ServiceItem = { id: string; title: string; description: string; icon: string };
@@ -91,7 +91,7 @@ function TiltCard({ item, idx, locale, learnMore }: {
       href={`/${locale}/services/${item.id}`}
       className="relative flex flex-col rounded-2xl p-7 overflow-hidden group cursor-pointer"
       style={{
-        background: `linear-gradient(145deg, ${colors.from} 0%, #1a3a6a 100%)`,
+        background: `linear-gradient(145deg, ${colors.from} 0%, #dde8ff 100%)`,
         border: `1px solid ${colors.border}`,
         transformStyle: "preserve-3d",
         transition: "box-shadow 0.4s ease",
@@ -118,7 +118,7 @@ function TiltCard({ item, idx, locale, learnMore }: {
       {/* Icon */}
       <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 flex-shrink-0"
         style={{
-          background: "rgba(255,255,255,0.04)",
+          background: "rgba(9,30,58,0.07)",
           border: `1px solid ${colors.border}`,
           color: "#C9A227",
         }}>
@@ -126,19 +126,19 @@ function TiltCard({ item, idx, locale, learnMore }: {
       </div>
 
       {/* Number */}
-      <div className="absolute top-6 right-7 font-display font-bold opacity-20 text-white"
+      <div className="absolute top-6 right-7 font-display font-bold opacity-10 text-[--navy-900]"
         style={{ fontSize: "clamp(2.5rem, 3vw, 3.5rem)" }}>
         {String(idx + 1).padStart(2, "0")}
       </div>
 
-      <h3 className="font-display font-bold text-white text-xl mb-3 group-hover:text-[--gold-400] transition-colors duration-300">
+      <h3 className="font-display font-bold text-[--navy-900] text-xl mb-3 group-hover:text-[--navy-700] transition-colors duration-300">
         {item.title}
       </h3>
-      <p className="text-white/75 text-sm leading-relaxed flex-1 mb-6 max-w-none">
+      <p className="text-[--grey-600] text-sm leading-relaxed flex-1 mb-6 max-w-none">
         {item.description}
       </p>
 
-      <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-[--gold-400] group-hover:text-[--gold-300] transition-colors duration-300">
+      <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-[--gold-700] group-hover:text-[--gold-600] transition-colors duration-300">
         {learnMore}
         <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
