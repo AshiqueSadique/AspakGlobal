@@ -14,16 +14,17 @@ export default function Footer() {
   }
 
   return (
-    <footer className="text-white/75" style={{ background: "#091E3A" }}>
+    <footer style={{ background: "linear-gradient(180deg, #eef0f4 0%, #e8eaef 100%)", color: "#2a3a52" }}>
       {/* Gold divider top */}
       <div className="gold-divider" />
 
-      <div className="container py-16">
+      <div className="container" style={{ paddingTop: "calc(4rem + 8px)", paddingBottom: "4rem" }}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-1">
             <Link href={localHref("/")} className="flex items-center gap-3 mb-5 group">
-              <div className="w-12 h-12 flex-shrink-0 transition-transform duration-500 group-hover:scale-105">
+              <div className="w-12 h-12 flex-shrink-0 transition-transform duration-500 group-hover:scale-105"
+                style={{ background: "#1a2f50", borderRadius: 10, padding: 4 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/aspak-logo.png"
@@ -35,16 +36,16 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <div className="font-display font-bold text-base leading-tight" style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.45)" }}>Aspak Global Co., Ltd.</div>
-                <div className="text-xs mt-0.5" style={{ color: "#C9A227" }}>บริษัท แอสแพค โกลบอล จำกัด</div>
+                <div className="font-display font-bold text-base leading-tight" style={{ color: "#1a2f50" }}>Aspak Global Co., Ltd.</div>
+                <div className="text-xs mt-0.5" style={{ color: "#a07818" }}>บริษัท แอสแพค โกลบอล จำกัด</div>
               </div>
             </Link>
-            <p className="text-sm leading-relaxed" style={{ color: "#b8cce0" }}>{t("description")}</p>
+            <p className="text-sm leading-relaxed" style={{ color: "#4a5f7a" }}>{t("description")}</p>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="font-display font-semibold text-sm tracking-wider uppercase mb-5" style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.4)" }}>
+            <h3 className="font-display font-semibold text-sm tracking-wider uppercase mb-5" style={{ color: "#1a2f50" }}>
               {t("services")}
             </h3>
             <ul className="flex flex-col gap-3 text-sm">
@@ -56,10 +57,10 @@ export default function Footer() {
                 { label: t("links.cleaning"), href: "/services/cleaning" },
               ].map(({ label, href }) => (
                 <li key={href} className="flex items-center gap-2">
-                  <span style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(201,162,39,0.6)", flexShrink: 0, display: "inline-block" }} />
-                  <Link href={localHref(href)} className="transition-colors duration-200" style={{ color: "#b8cce0" }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#f0d060"}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#b8cce0"}>
+                  <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C9A227", flexShrink: 0, display: "inline-block" }} />
+                  <Link href={localHref(href)} className="transition-colors duration-200" style={{ color: "#4a5f7a" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#a07818"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#4a5f7a"}>
                     {label}
                   </Link>
                 </li>
@@ -69,7 +70,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-display font-semibold text-sm tracking-wider uppercase mb-5" style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.4)" }}>
+            <h3 className="font-display font-semibold text-sm tracking-wider uppercase mb-5" style={{ color: "#1a2f50" }}>
               {t("company")}
             </h3>
             <ul className="flex flex-col gap-3 text-sm">
@@ -79,10 +80,10 @@ export default function Footer() {
                 { label: t("links.contact"), href: "/contact" },
               ].map(({ label, href }) => (
                 <li key={href} className="flex items-center gap-2">
-                  <span style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(201,162,39,0.6)", flexShrink: 0, display: "inline-block" }} />
-                  <Link href={localHref(href)} className="transition-colors duration-200" style={{ color: "#b8cce0" }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#f0d060"}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#b8cce0"}>
+                  <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C9A227", flexShrink: 0, display: "inline-block" }} />
+                  <Link href={localHref(href)} className="transition-colors duration-200" style={{ color: "#4a5f7a" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#a07818"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#4a5f7a"}>
                     {label}
                   </Link>
                 </li>
@@ -92,32 +93,32 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-display font-semibold text-sm tracking-wider uppercase mb-5" style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.4)" }}>
+            <h3 className="font-display font-semibold text-sm tracking-wider uppercase mb-5" style={{ color: "#1a2f50" }}>
               {t("contact")}
             </h3>
             <div className="flex flex-col gap-4 text-sm">
-              <a href="tel:+6620000000" className="flex items-start gap-3 transition-colors duration-200 group" style={{ color: "#b8cce0" }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#f0d060"}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#b8cce0"}>
+              <a href="tel:+6620000000" className="flex items-start gap-3 transition-colors duration-200" style={{ color: "#4a5f7a" }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#a07818"}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#4a5f7a"}>
                 <PhoneIcon />
                 <span>+66 2 XXX XXXX</span>
               </a>
-              <a href="mailto:contact@aspakglobal.com" className="flex items-start gap-3 transition-colors duration-200" style={{ color: "#b8cce0" }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#f0d060"}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#b8cce0"}>
+              <a href="mailto:contact@aspakglobal.com" className="flex items-start gap-3 transition-colors duration-200" style={{ color: "#4a5f7a" }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#a07818"}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#4a5f7a"}>
                 <EmailIcon />
                 <span>contact@aspakglobal.com</span>
               </a>
               <a href="https://line.me/R/ti/p/@aspakglobal" target="_blank" rel="noopener noreferrer"
-                className="flex items-start gap-3 transition-colors duration-200" style={{ color: "#b8cce0" }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#f0d060"}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#b8cce0"}>
+                className="flex items-start gap-3 transition-colors duration-200" style={{ color: "#4a5f7a" }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#a07818"}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#4a5f7a"}>
                 <LineIcon />
                 <span>LINE: @aspakglobal</span>
               </a>
-              <div className="flex items-start gap-3 pt-1" style={{ color: "#b8cce0" }}>
+              <div className="flex items-start gap-3 pt-1">
                 <MapIcon />
-                <span className="text-xs leading-relaxed" style={{ color: "rgba(184,204,224,0.65)" }}>
+                <span className="text-xs leading-relaxed" style={{ color: "#6a7f9a" }}>
                   No. 1, Soi Pracha Uthit 79 Yaek 1,<br />Thung Khru, Bangkok 10140
                 </span>
               </div>
@@ -127,12 +128,12 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-        <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs" style={{ color: "rgba(184,204,224,0.45)" }}>
+      <div style={{ borderTop: "1px solid rgba(26,47,80,0.12)" }}>
+        <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs" style={{ color: "#8a9fb8" }}>
           <span>{t("copyright", { year })}</span>
           <Link href={localHref("/")} className="transition-colors duration-200"
-            onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#C9A227"}
-            onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(184,204,224,0.45)"}>
+            onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#a07818"}
+            onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#8a9fb8"}>
             {t("links.privacy")}
           </Link>
         </div>
@@ -143,7 +144,7 @@ export default function Footer() {
 
 function PhoneIcon() {
   return (
-    <svg className="w-4 h-4 text-[--gold-600] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <svg className="w-4 h-4 flex-shrink-0" style={{ color: "#C9A227" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
     </svg>
   );
@@ -151,7 +152,7 @@ function PhoneIcon() {
 
 function EmailIcon() {
   return (
-    <svg className="w-4 h-4 text-[--gold-600] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+    <svg className="w-4 h-4 flex-shrink-0" style={{ color: "#C9A227" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
     </svg>
   );
