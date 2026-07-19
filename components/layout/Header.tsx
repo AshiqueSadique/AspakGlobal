@@ -125,17 +125,23 @@ export default function Header() {
         </Link>
 
         {/* ── Desktop Nav ── */}
-        <nav className="hidden lg:flex items-center gap-7" aria-label="Main navigation">
+        <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
           {[
             { label: t("home"), href: "/" },
             { label: t("about"), href: "/about" },
           ].map(({ label, href }) => (
             <Link key={href} href={localHref(href)}
-              className={`text-sm font-medium transition-colors duration-200 hover:text-[--gold-400] ${
+              className={`relative px-4 py-2 text-sm font-semibold rounded-lg group transition-colors duration-200 ${
                 isActive(href) && (href !== "/" || strippedPath === "/")
                   ? "text-[--gold-400]"
-                  : "text-white/75"
+                  : "text-white hover:text-[--gold-300]"
               }`}>
+              {/* Underline slide-in */}
+              <span className={`absolute bottom-1 left-4 right-4 h-px rounded-full transition-all duration-300 origin-left ${
+                isActive(href) && (href !== "/" || strippedPath === "/")
+                  ? "scale-x-100 bg-[--gold-400]"
+                  : "scale-x-0 bg-[--gold-400] group-hover:scale-x-100"
+              }`} />
               {label}
             </Link>
           ))}
@@ -144,31 +150,50 @@ export default function Header() {
           <div ref={dropdownRef} className="relative">
             <button
               onClick={() => setServicesOpen((v) => !v)}
-              className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 hover:text-[--gold-400] ${
-                isActive("/services") ? "text-[--gold-400]" : "text-white/75"
+              className={`relative flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg group transition-colors duration-200 ${
+                isActive("/services") ? "text-[--gold-400]" : "text-white hover:text-[--gold-300]"
               }`}
               aria-haspopup="true"
               aria-expanded={servicesOpen}
             >
+              <span className={`absolute bottom-1 left-4 right-4 h-px rounded-full transition-all duration-300 origin-left ${
+                isActive("/services") ? "scale-x-100 bg-[--gold-400]" : "scale-x-0 bg-[--gold-400] group-hover:scale-x-100"
+              }`} />
               {t("services")}
               <svg
-                className={`w-3.5 h-3.5 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
+                className={`w-3 h-3 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
 
             {/* Dropdown panel */}
-            <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-60 transition-all duration-200 origin-top ${
-              servicesOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
+            <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 transition-all duration-250 origin-top ${
+              servicesOpen ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
             }`}>
-              <div className="bg-[--navy-900] border border-white/10 rounded-xl shadow-2xl overflow-hidden">
+              {/* Top pointer */}
+              <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45"
+                style={{ background: "#0d2044", border: "1px solid rgba(201,162,39,0.3)", borderBottom: "none", borderRight: "none" }} />
+              <div className="rounded-xl overflow-hidden shadow-2xl"
+                style={{ background: "linear-gradient(160deg, #1a3560 0%, #0d2044 100%)", border: "1px solid rgba(201,162,39,0.25)" }}>
+                {/* Shimmer top border */}
+                <div className="h-px w-full overflow-hidden">
+                  <div style={{ height: "100%", background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
+                </div>
                 {SERVICE_LINKS.map(({ key, href }) => (
                   <Link key={key} href={localHref(href)}
                     onClick={() => setServicesOpen(false)}
-                    className="flex items-center gap-2 px-4 py-3 text-sm text-white/70 hover:text-[--gold-400] hover:bg-white/5 transition-all duration-150 border-b border-white/5 last:border-0">
-                    <span className="w-1 h-1 rounded-full bg-[--gold-600] opacity-60" />
+                    className="group/item flex items-center gap-3 px-4 py-3 text-sm font-medium border-b transition-all duration-200 last:border-0"
+                    style={{ color: "#b8cce0", borderColor: "rgba(255,255,255,0.05)" }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "#f0d060"; (e.currentTarget as HTMLElement).style.background = "rgba(201,162,39,0.07)"; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "#b8cce0"; (e.currentTarget as HTMLElement).style.background = "transparent"; }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-200"
+                      style={{ background: "rgba(201,162,39,0.5)", boxShadow: "0 0 6px rgba(201,162,39,0.3)" }} />
                     {t(`servicesMenu.${key}`)}
+                    <svg className="w-3 h-3 ml-auto opacity-0 group-hover/item:opacity-100 transition-all duration-200 -translate-x-1 group-hover/item:translate-x-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                    </svg>
                   </Link>
                 ))}
               </div>
@@ -176,9 +201,12 @@ export default function Header() {
           </div>
 
           <Link href={localHref("/contact")}
-            className={`text-sm font-medium transition-colors duration-200 hover:text-[--gold-400] ${
-              isActive("/contact") ? "text-[--gold-400]" : "text-white/75"
+            className={`relative px-4 py-2 text-sm font-semibold rounded-lg group transition-colors duration-200 ${
+              isActive("/contact") ? "text-[--gold-400]" : "text-white hover:text-[--gold-300]"
             }`}>
+            <span className={`absolute bottom-1 left-4 right-4 h-px rounded-full transition-all duration-300 origin-left ${
+              isActive("/contact") ? "scale-x-100 bg-[--gold-400]" : "scale-x-0 bg-[--gold-400] group-hover:scale-x-100"
+            }`} />
             {t("contact")}
           </Link>
         </nav>
