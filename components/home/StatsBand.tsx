@@ -80,6 +80,7 @@ export default function StatsBand() {
           <span className="section-label text-[--gold-400]">{t("label")}</span>
         </div>
 
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {items.map((item, i) => (
             <div key={i} className="relative text-center px-4">
@@ -110,7 +111,7 @@ export default function StatsBand() {
               <div data-line className="h-px w-12 mx-auto mb-3 rounded-full"
                 style={{ background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
 
-              <div data-label className="text-white/45 text-sm font-medium tracking-wide leading-snug">
+              <div data-label className="text-white/70 text-sm font-medium tracking-wide leading-snug">
                 {item.label}
               </div>
             </div>

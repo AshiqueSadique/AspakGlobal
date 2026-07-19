@@ -75,12 +75,18 @@ export default function CtaBand() {
             style={{ background: "linear-gradient(to left, transparent, rgba(201,162,39,0.5))" }} />
         </div>
 
-        <h2 data-c className="font-display font-bold text-white mb-5"
-          style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)", lineHeight: 1.1 }}>
+        <h2 data-c className="font-display font-bold mb-5"
+          style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)", lineHeight: 1.1, color: "#c8d8f0", WebkitTextStroke: "0.5px rgba(201,162,39,0.55)", textShadow: "0 0 60px rgba(201,162,39,0.12)" }}>
           {t("heading")}
         </h2>
 
-        <p data-c className="text-white/45 text-lg leading-relaxed mb-12 max-w-xl mx-auto">
+        {/* Shimmer divider */}
+        <div data-c className="relative w-48 h-px mx-auto mb-8 overflow-hidden rounded-full">
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)", animation: "shimmer-line 2.5s ease-in-out infinite" }} />
+        </div>
+
+        <p data-c className="text-white/70 text-lg leading-relaxed mb-12 max-w-xl mx-auto">
           {t("body")}
         </p>
 
@@ -98,6 +104,10 @@ export default function CtaBand() {
       </div>
 
       <style>{`
+        @keyframes shimmer-line {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
         @keyframes cta-pulse {
           from { transform: scale(1) translateY(0); opacity: 0.8; }
           to { transform: scale(1.1) translateY(-20px); opacity: 1; }

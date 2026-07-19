@@ -115,13 +115,15 @@ export default function IntroSection() {
           {/* Text — right */}
           <div className="order-1 lg:order-2">
             <span data-left className="section-label text-[--gold-400] block mb-5">{t("label")}</span>
-            <h2 data-left className="font-display font-bold text-white mb-6"
-              style={{ fontSize: "clamp(1.9rem, 3.5vw, 3rem)", lineHeight: 1.15 }}>
+            <h2 data-left className="font-display font-bold mb-6"
+              style={{ fontSize: "clamp(1.9rem, 3.5vw, 3rem)", lineHeight: 1.15, color: "#c8d8f0", WebkitTextStroke: "0.5px rgba(201,162,39,0.55)", textShadow: "0 0 60px rgba(201,162,39,0.1)" }}>
               {t("heading")}
             </h2>
-            <div data-left className="h-px w-14 rounded-full mb-7"
-              style={{ background: "linear-gradient(90deg, #C9A227, transparent)" }} />
-            <p data-left className="text-white/45 leading-relaxed mb-8 max-w-none text-base">
+            <div data-left className="relative w-14 h-px mb-7 overflow-hidden rounded-full">
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, #C9A227, transparent)" }} />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)", animation: "shimmer-line 2.5s ease-in-out infinite" }} />
+            </div>
+            <p data-left className="text-white/70 leading-relaxed mb-8 max-w-none text-base">
               {t("body")}
             </p>
             <div data-left className="flex items-center gap-3">
@@ -132,13 +134,17 @@ export default function IntroSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
                 </svg>
               </div>
-              <span className="text-sm text-white/40 font-medium">{t("since")}</span>
+              <span className="text-sm text-white/70 font-medium">{t("since")}</span>
             </div>
           </div>
         </div>
       </div>
 
       <style>{`
+        @keyframes shimmer-line {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
         @keyframes ring-pulse {
           from { transform: scale(1); opacity: 0.6; }
           to { transform: scale(1.12); opacity: 1; }

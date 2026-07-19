@@ -14,7 +14,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[--navy-950] text-white/70">
+    <footer className="bg-[--navy-950] text-white/75">
       {/* Gold divider top */}
       <div className="gold-divider" />
 
@@ -36,7 +36,7 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <div className="font-display font-bold text-white text-base leading-tight">Aspak Global Co., Ltd.</div>
+                <div className="font-display font-bold text-base leading-tight" style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.45)" }}>Aspak Global Co., Ltd.</div>
                 <div className="text-xs text-[--gold-400] mt-0.5">บริษัท แอสแพค โกลบอล จำกัด</div>
               </div>
             </Link>
@@ -62,7 +62,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-display font-semibold text-sm tracking-wider uppercase mb-4">
+            <h3 className="font-display font-semibold text-sm tracking-wider uppercase mb-4" style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.4)" }}>
               {t("services")}
             </h3>
             <ul className="flex flex-col gap-2 text-sm">
@@ -84,7 +84,7 @@ export default function Footer() {
 
           {/* Company + Address */}
           <div>
-            <h3 className="text-white font-display font-semibold text-sm tracking-wider uppercase mb-4">
+            <h3 className="font-display font-semibold text-sm tracking-wider uppercase mb-4" style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.4)" }}>
               {t("company")}
             </h3>
             <ul className="flex flex-col gap-2 text-sm mb-6">
@@ -100,7 +100,7 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <div className="text-xs leading-relaxed text-white/50">
+            <div className="text-xs leading-relaxed text-white/65">
               <MapIcon />
               <span className="mt-1 block">{t("address")}</span>
             </div>

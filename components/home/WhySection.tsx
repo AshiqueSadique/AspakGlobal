@@ -72,13 +72,16 @@ export default function WhySection() {
           {/* Left — heading */}
           <div>
             <span data-h className="section-label text-[--gold-400] block mb-5">{t("label")}</span>
-            <h2 data-h className="font-display font-bold text-white whitespace-pre-line mb-6"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", lineHeight: 1.1 }}>
+            <h2 data-h className="font-display font-bold whitespace-pre-line mb-6"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", lineHeight: 1.1, color: "#c8d8f0", WebkitTextStroke: "0.5px rgba(201,162,39,0.55)", textShadow: "0 0 60px rgba(201,162,39,0.1)" }}>
               {t("heading")}
             </h2>
-            <div data-h className="h-px w-16 rounded-full mb-8"
-              style={{ background: "linear-gradient(90deg, #C9A227, transparent)" }} />
-            <p data-h className="text-white/40 leading-relaxed max-w-md text-sm">
+            {/* Shimmer divider */}
+            <div data-h className="relative w-16 h-px mb-8 overflow-hidden rounded-full">
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)", animation: "shimmer-line 2.5s ease-in-out infinite" }} />
+            </div>
+            <p data-h className="text-white/70 leading-relaxed max-w-md text-sm">
               {t("heading").split("\n")[0]}
             </p>
           </div>
@@ -91,16 +94,16 @@ export default function WhySection() {
                 data-card
                 className="group flex items-start gap-4 p-5 rounded-xl transition-all duration-500 cursor-default"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.06)",
+                  background: "rgba(200,216,240,0.04)",
+                  border: "1px solid rgba(200,216,240,0.1)",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background = "rgba(201,162,39,0.06)";
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,162,39,0.25)";
+                  (e.currentTarget as HTMLDivElement).style.background = "rgba(201,162,39,0.07)";
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,162,39,0.3)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)";
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.06)";
+                  (e.currentTarget as HTMLDivElement).style.background = "rgba(200,216,240,0.04)";
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(200,216,240,0.1)";
                 }}
               >
                 <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 text-[--gold-500]"
@@ -108,16 +111,23 @@ export default function WhySection() {
                   {ICONS[i % ICONS.length]}
                 </div>
                 <div>
-                  <h3 className="font-display font-semibold text-white text-base mb-1 group-hover:text-[--gold-400] transition-colors duration-300">
+                  <h3 className="font-display font-semibold text-base mb-1 group-hover:text-[--gold-400] transition-colors duration-300"
+                    style={{ color: "#c8d8f0", WebkitTextStroke: "0.4px rgba(201,162,39,0.4)" }}>
                     {item.title}
                   </h3>
-                  <p className="text-white/40 text-sm leading-relaxed max-w-none">{item.description}</p>
+                  <p className="text-white/70 text-sm leading-relaxed max-w-none">{item.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+      <style>{`
+        @keyframes shimmer-line {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
     </section>
   );
 }
