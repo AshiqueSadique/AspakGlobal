@@ -240,9 +240,9 @@ export default function HeroSection() {
           <img
             src="/aspak-logo.png"
             alt="Aspak Global Co., Ltd."
-            width={160}
-            height={128}
-            className="w-36 md:w-44 h-auto object-contain drop-shadow-2xl"
+            width={256}
+            height={205}
+            className="w-52 md:w-64 h-auto object-contain drop-shadow-2xl"
             style={{ mixBlendMode: "screen", filter: "drop-shadow(0 0 40px rgba(201,162,39,0.3))" }}
           />
         </div>
@@ -262,7 +262,7 @@ export default function HeroSection() {
             <div key={i} data-r="line" className="overflow-visible" style={{ opacity: 0 }}>
               <h1
                 className="font-display font-bold leading-[1.05] tracking-tight"
-                style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)" }}
+                style={{ fontSize: "clamp(2.2rem, 5vw, 4.8rem)" }}
               >
                 {i === lines.length - 1 ? (
                   <span style={{
