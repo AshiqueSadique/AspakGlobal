@@ -66,69 +66,68 @@ export default function Header() {
         className={className}
         style={{
           position: "relative",
-          width: 72,
-          height: 30,
+          width: 80,
+          height: 34,
           borderRadius: 999,
-          background: "rgba(10,20,40,0.7)",
-          border: "1px solid rgba(255,255,255,0.15)",
-          backdropFilter: "blur(8px)",
+          /* track colour: green when EN (left), muted navy when TH (right) */
+          background: isEN
+            ? "linear-gradient(135deg, #16a34a 0%, #22c55e 100%)"
+            : "linear-gradient(135deg, #0d1e38 0%, #1a3560 100%)",
+          border: isEN
+            ? "1.5px solid rgba(34,197,94,0.6)"
+            : "1.5px solid rgba(201,162,39,0.35)",
+          boxShadow: isEN
+            ? "0 0 12px rgba(34,197,94,0.3), inset 0 1px 0 rgba(255,255,255,0.1)"
+            : "0 0 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)",
           cursor: "pointer",
-          perspective: "200px",
           overflow: "hidden",
           flexShrink: 0,
+          transition: "background 0.4s, border-color 0.4s, box-shadow 0.4s",
         }}
       >
-        {/* Subtle green inner glow */}
+        {/* Label left — EN */}
         <span style={{
           position: "absolute",
-          inset: 0,
-          borderRadius: 999,
-          background: "radial-gradient(ellipse at center, rgba(34,197,94,0.08) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-
-        {/* Sliding knob */}
-        <span style={{
-          position: "absolute",
-          top: 3,
-          left: isEN ? 3 : 39,
-          width: 30,
-          height: 22,
-          borderRadius: 999,
-          background: "linear-gradient(135deg, rgba(34,197,94,0.9) 0%, rgba(22,163,74,0.95) 100%)",
-          boxShadow: "0 2px 8px rgba(34,197,94,0.45), inset 0 1px 0 rgba(255,255,255,0.25)",
-          transition: "left 0.35s cubic-bezier(0.34,1.56,0.64,1)",
-          transform: "rotateY(0deg)",
-          transformStyle: "preserve-3d",
-        }} />
-
-        {/* Labels */}
-        <span style={{
-          position: "absolute",
-          left: 8,
+          left: 10,
           top: "50%",
           transform: "translateY(-50%)",
-          fontSize: "0.65rem",
-          fontWeight: 700,
-          letterSpacing: "0.05em",
-          color: isEN ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.85)",
-          transition: "color 0.3s",
+          fontSize: "0.6rem",
+          fontWeight: 800,
+          letterSpacing: "0.08em",
+          color: isEN ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.0)",
+          transition: "color 0.35s, opacity 0.35s",
           pointerEvents: "none",
           userSelect: "none",
         }}>EN</span>
+
+        {/* Label right — TH */}
         <span style={{
           position: "absolute",
-          right: 8,
+          right: 10,
           top: "50%",
           transform: "translateY(-50%)",
-          fontSize: "0.65rem",
-          fontWeight: 700,
-          letterSpacing: "0.05em",
-          color: isEN ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.4)",
-          transition: "color 0.3s",
+          fontSize: "0.6rem",
+          fontWeight: 800,
+          letterSpacing: "0.08em",
+          color: isEN ? "rgba(255,255,255,0.0)" : "rgba(255,255,255,0.9)",
+          transition: "color 0.35s",
           pointerEvents: "none",
           userSelect: "none",
         }}>TH</span>
+
+        {/* White knob */}
+        <span style={{
+          position: "absolute",
+          top: 3,
+          left: isEN ? "calc(100% - 28px - 3px)" : 3,
+          width: 28,
+          height: 26,
+          borderRadius: 999,
+          background: "linear-gradient(160deg, #ffffff 0%, #e8edf5 100%)",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.9)",
+          transition: "left 0.4s cubic-bezier(0.34,1.45,0.64,1)",
+          pointerEvents: "none",
+        }} />
       </button>
     );
   };
