@@ -12,11 +12,9 @@ export default function AboutHero() {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    gsap.fromTo(
-      el.querySelectorAll("[data-hero]"),
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, duration: 1, stagger: 0.14, ease: "expo.out", delay: 0.2 }
-    );
+    const els = el.querySelectorAll("[data-hero]");
+    gsap.set(els, { opacity: 0, y: 30 });
+    gsap.to(els, { opacity: 1, y: 0, duration: 1, stagger: 0.14, ease: "expo.out", delay: 0.15 });
   }, []);
 
   return (
@@ -26,7 +24,7 @@ export default function AboutHero() {
       style={{
         paddingTop: "clamp(7rem, 16vh, 10rem)",
         paddingBottom: "5rem",
-        background: "linear-gradient(160deg, #f0f4f8 0%, #e8edf5 50%, #eef1f7 100%)",
+        background: "linear-gradient(160deg, #dde3ed 0%, #d4dce9 50%, #dae0eb 100%)",
       }}
     >
       {/* Decorative gold orb top-right */}
@@ -61,9 +59,9 @@ export default function AboutHero() {
 
         {/* Label */}
         <span data-hero className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-[0.25em] uppercase mb-5" style={{
-          background: "rgba(201,162,39,0.12)",
-          color: "#a07818",
-          border: "1px solid rgba(201,162,39,0.3)",
+          background: "rgba(160,120,24,0.15)",
+          color: "#7a5a0a",
+          border: "1px solid rgba(160,120,24,0.45)",
         }}>
           {t("label")}
         </span>
@@ -71,8 +69,9 @@ export default function AboutHero() {
         {/* Heading */}
         <h1 data-hero className="font-display font-bold whitespace-pre-line mb-5" style={{
           fontSize: "clamp(2rem, 5vw, 3.5rem)",
-          color: "#0d1e38",
-          lineHeight: 1.1,
+          color: "#050d1a",
+          lineHeight: 1.15,
+          textShadow: "0 1px 2px rgba(0,0,0,0.08)",
         }}>
           {t("heading")}
         </h1>
@@ -84,7 +83,7 @@ export default function AboutHero() {
         </div>
 
         {/* Body */}
-        <p data-hero className="leading-relaxed text-lg max-w-none mx-auto" style={{ color: "#4a5f7a" }}>
+        <p data-hero className="leading-relaxed text-lg max-w-none mx-auto" style={{ color: "#1e3a5a" }}>
           {t("body")}
         </p>
       </div>
