@@ -22,7 +22,7 @@ export default function AboutHero() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden min-h-screen flex flex-col justify-center"
       style={{
         paddingTop: "clamp(7rem, 16vh, 10rem)",
         paddingBottom: "5rem",
