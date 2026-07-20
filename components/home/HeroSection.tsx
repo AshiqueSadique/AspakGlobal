@@ -232,23 +232,23 @@ export default function HeroSection() {
       </div>
 
       {/* ── Main content — centered layout ── */}
-      <div className="container relative z-10 flex flex-col items-center text-center" style={{ paddingTop: "clamp(6rem, 14vh, 10rem)", paddingBottom: "6rem" }}>
+      <div className="container relative z-10 flex flex-col items-center text-center" style={{ paddingTop: "clamp(5rem, 11vh, 7rem)", paddingBottom: "3rem" }}>
 
         {/* Logo — parallax target */}
-        <div ref={logoRef} data-r="logo" className="mb-10" style={{ opacity: 0 }}>
+        <div ref={logoRef} data-r="logo" className="mb-4" style={{ opacity: 0 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/aspak-logo.png"
             alt="Aspak Global Co., Ltd."
-            width={256}
-            height={205}
-            className="w-52 md:w-64 h-auto object-contain drop-shadow-2xl"
+            width={320}
+            height={256}
+            className="w-64 md:w-80 h-auto object-contain drop-shadow-2xl"
             style={{ mixBlendMode: "screen", filter: "drop-shadow(0 0 40px rgba(201,162,39,0.3))" }}
           />
         </div>
 
         {/* Eyebrow */}
-        <div data-r="eyebrow" className="flex items-center gap-3 mb-7" style={{ opacity: 0 }}>
+        <div data-r="eyebrow" className="flex items-center gap-3 mb-4" style={{ opacity: 0 }}>
           <div className="h-px w-10 bg-gradient-to-r from-transparent to-[--gold-600]" />
           <span className="text-[--gold-500] text-xs font-bold tracking-[0.3em] uppercase">
             {t("eyebrow")}
@@ -257,12 +257,12 @@ export default function HeroSection() {
         </div>
 
         {/* Headline — large, centred */}
-        <div className="mb-8 space-y-0">
+        <div className="mb-4 space-y-0">
           {lines.map((line, i) => (
             <div key={i} data-r="line" className="overflow-visible" style={{ opacity: 0 }}>
               <h1
                 className="font-display font-bold leading-[1.05] tracking-tight"
-                style={{ fontSize: "clamp(2.2rem, 5vw, 4.8rem)" }}
+                style={{ fontSize: "clamp(1.8rem, 4vw, 3.6rem)" }}
               >
                 {i === lines.length - 1 ? (
                   <span style={{
@@ -284,7 +284,7 @@ export default function HeroSection() {
         </div>
 
         {/* Elegant accent — diamond + lines + travelling spark */}
-        <div data-r="sub" className="flex items-center justify-center gap-3 mb-10" style={{ opacity: 0 }}>
+        <div data-r="sub" className="flex items-center justify-center gap-3 mb-4" style={{ opacity: 0 }}>
           {/* Left line with fade */}
           <div className="relative h-px w-24 overflow-hidden rounded-full">
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, transparent, rgba(201,162,39,0.6))" }} />
@@ -322,7 +322,7 @@ export default function HeroSection() {
         </div>
 
         {/* Subheadline */}
-        <p data-r="sub" className="text-lg leading-[1.85] mb-12 max-w-[46ch]" style={{ opacity: 0, color: "#b8cce0" }}>
+        <p data-r="sub" className="text-base leading-[1.7] mb-6 max-w-[46ch]" style={{ opacity: 0, color: "#b8cce0" }}>
           {t("subheadline")}
         </p>
 
