@@ -1,7 +1,12 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SERVICES = [
   {
@@ -51,61 +56,103 @@ const SERVICES = [
   },
 ];
 
+const LABEL_STYLE = {
+  background: "rgba(160,120,24,0.15)", color: "#7a5a0a", border: "1px solid rgba(160,120,24,0.45)",
+};
+
 export default function ServicesHub() {
   const t = useTranslations("services");
   const homeT = useTranslations("home.services");
   const locale = useLocale();
-  const items = homeT.raw("items") as Array<{ id: string; title: string; description: string; icon: string }>;
+  const items = homeT.raw("items") as Array<{ id: string; title: string; description: string }>;
+  const heroRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (hero && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const els = hero.querySelectorAll("[data-hero]");
+      gsap.set(els, { opacity: 0, y: 30 });
+      gsap.to(els, { opacity: 1, y: 0, duration: 1, stagger: 0.14, ease: "expo.out", delay: 0.15 });
+    }
+    const grid = gridRef.current;
+    if (grid && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const cards = grid.querySelectorAll("[data-card]");
+      gsap.set(cards, { opacity: 0, y: 36 });
+      ScrollTrigger.create({
+        trigger: grid, start: "top 82%",
+        onEnter: () => gsap.to(cards, { opacity: 1, y: 0, duration: 0.9, stagger: 0.09, ease: "expo.out" }),
+        once: true,
+      });
+    }
+  }, []);
 
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-36 pb-24 bg-[--navy-950] overflow-hidden">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: "radial-gradient(ellipse at 30% 50%, #C9A227, transparent 60%)" }} />
+      <section ref={heroRef} className="relative min-h-[55vh] flex flex-col justify-center overflow-hidden"
+        style={{ paddingTop: "clamp(7rem,16vh,10rem)", paddingBottom: "5rem", background: "linear-gradient(160deg, #dde3ed 0%, #d4dce9 50%, #dae0eb 100%)" }}>
+        <div className="absolute top-0 right-0 w-96 h-96 pointer-events-none" style={{ background: "radial-gradient(circle at 70% 20%, rgba(201,162,39,0.12) 0%, transparent 60%)" }} />
+        <div className="absolute bottom-0 left-0 w-80 h-80 pointer-events-none" style={{ background: "radial-gradient(circle at 20% 80%, rgba(9,22,40,0.07) 0%, transparent 60%)" }} />
+        <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, transparent, #C9A227 30%, #F0D060 50%, #C9A227 70%, transparent)" }} />
+
         <div className="container relative z-10 max-w-3xl text-center mx-auto">
-          <span className="section-label text-[--gold-400] block mb-4">{t("hero.label")}</span>
-          <h1 className="font-display font-bold text-white whitespace-pre-line mb-6"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
+          <span data-hero className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-[0.25em] uppercase mb-5" style={LABEL_STYLE}>
+            {t("hero.label")}
+          </span>
+          <h1 data-hero className="font-display font-bold whitespace-pre-line mb-5"
+            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#050d1a", lineHeight: 1.15, textShadow: "0 1px 2px rgba(0,0,0,0.08)" }}>
             {t("hero.heading")}
           </h1>
-          <p className="text-white/60 leading-relaxed text-lg max-w-none">{t("hero.body")}</p>
+          <div data-hero className="relative w-20 h-0.5 mx-auto mb-6 overflow-hidden rounded-full">
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.9) 50%, transparent 80%)", animation: "shimmer-line 2.5s ease-in-out infinite" }} />
+          </div>
+          <p data-hero className="leading-relaxed text-lg max-w-none" style={{ color: "#1e3a5a" }}>
+            {t("hero.body")}
+          </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" className="w-full h-12 block" preserveAspectRatio="none">
-            <path d="M0,30 Q360,60 720,30 Q1080,0 1440,30 L1440,60 L0,60 Z" fill="white"/>
+          <svg viewBox="0 0 1440 48" className="w-full h-10 block" preserveAspectRatio="none">
+            <path d="M0,24 Q360,48 720,24 Q1080,0 1440,24 L1440,48 L0,48 Z" fill="white"/>
           </svg>
         </div>
+        <style>{`@keyframes shimmer-line{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}`}</style>
       </section>
 
       {/* Services grid */}
-      <section className="section-pad bg-white">
+      <section className="section-pad" style={{ background: "#ffffff" }}>
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map((item) => {
               const svc = SERVICES.find((s) => s.id === item.id);
               return (
-                <Link
-                  key={item.id}
-                  href={`/${locale}/services/${item.id}`}
-                  className="group block rounded-2xl overflow-hidden border border-[--grey-200] hover:border-transparent hover:shadow-xl transition-all duration-300"
+                <Link key={item.id} href={`/${locale}/services/${item.id}`} data-card
+                  className="group block rounded-2xl overflow-hidden"
+                  style={{
+                    background: "#ffffff",
+                    border: "1.5px solid rgba(9,22,40,0.08)",
+                    boxShadow: "0 4px 20px rgba(9,22,40,0.06)",
+                    transition: "transform 0.4s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.4s, border-color 0.3s",
+                  }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-8px)"; el.style.boxShadow = "0 20px 48px rgba(9,22,40,0.12)"; el.style.borderColor = "rgba(201,162,39,0.5)"; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = ""; el.style.boxShadow = "0 4px 20px rgba(9,22,40,0.06)"; el.style.borderColor = "rgba(9,22,40,0.08)"; }}
                 >
-                  {/* Color header */}
-                  <div
-                    className="h-28 flex items-center justify-center"
-                    style={{ background: `linear-gradient(135deg, ${svc?.color || "#123A6B"}, ${svc?.color || "#123A6B"}CC)` }}
-                  >
-                    <div className="text-[--gold-400] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+                  {/* Icon header */}
+                  <div className="h-32 flex items-center justify-center relative overflow-hidden"
+                    style={{ background: `linear-gradient(145deg, ${svc?.color || "#123A6B"}, ${svc?.color || "#123A6B"}dd)` }}>
+                    <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 80% 20%, rgba(201,162,39,0.15) 0%, transparent 60%)" }} />
+                    <div className="relative text-[#F0D060] transition-transform duration-400 group-hover:scale-110">
                       {svc?.icon}
                     </div>
                   </div>
                   {/* Content */}
                   <div className="p-6">
-                    <h2 className="font-display font-bold text-[--navy-900] text-lg mb-3 group-hover:text-[--navy-700] transition-colors">
+                    <h2 className="font-display font-bold text-lg mb-3 transition-colors duration-300" style={{ color: "#050d1a" }}>
                       {item.title}
                     </h2>
-                    <p className="text-sm text-[--color-text-muted] leading-relaxed mb-5 max-w-none">{item.description}</p>
-                    <div className="flex items-center gap-2 text-sm font-semibold text-[--gold-600] group-hover:gap-3 transition-all">
+                    <p className="text-sm leading-relaxed mb-5 max-w-none" style={{ color: "#4a5f7a" }}>{item.description}</p>
+                    <div className="flex items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:gap-3" style={{ color: "#a07818" }}>
                       {t("grid.learnMore")}
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
