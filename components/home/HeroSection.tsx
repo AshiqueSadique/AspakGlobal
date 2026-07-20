@@ -175,7 +175,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen overflow-hidden"
       style={{ background: "linear-gradient(135deg, #050d1a 0%, #091628 40%, #0d1e38 70%, #07121f 100%)" }}
     >
       {/* ── Particle canvas ── */}
