@@ -232,7 +232,7 @@ export default function HeroSection() {
       </div>
 
       {/* ── Main content — centered layout ── */}
-      <div className="container relative z-10 flex flex-col items-center text-center pt-40 pb-24">
+      <div className="container relative z-10 flex flex-col items-center text-center pt-48 pb-24">
 
         {/* Logo — parallax target */}
         <div ref={logoRef} data-r="logo" className="mb-10" style={{ opacity: 0 }}>
