@@ -59,6 +59,8 @@ export default function Header() {
 
   const LangPill = ({ className = "" }: { className?: string }) => {
     const isEN = locale === "en";
+    // Fixed dimensions — never change on toggle
+    const W = 88, H = 36, KNOB = 28, PAD = 4;
     return (
       <button
         onClick={switchLocale}
@@ -66,66 +68,80 @@ export default function Header() {
         className={className}
         style={{
           position: "relative",
-          width: 80,
-          height: 34,
+          width: W,
+          height: H,
           borderRadius: 999,
-          /* track colour: green when EN (left), muted navy when TH (right) */
-          background: isEN
-            ? "linear-gradient(135deg, #16a34a 0%, #22c55e 100%)"
-            : "linear-gradient(135deg, #0d1e38 0%, #1a3560 100%)",
-          border: isEN
-            ? "1.5px solid rgba(34,197,94,0.6)"
-            : "1.5px solid rgba(201,162,39,0.35)",
-          boxShadow: isEN
-            ? "0 0 12px rgba(34,197,94,0.3), inset 0 1px 0 rgba(255,255,255,0.1)"
-            : "0 0 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)",
-          cursor: "pointer",
-          overflow: "hidden",
           flexShrink: 0,
-          transition: "background 0.4s, border-color 0.4s, box-shadow 0.4s",
+          cursor: "pointer",
+          // Neumorphic sunken track
+          background: "linear-gradient(145deg, #07111f 0%, #0d1e38 60%, #112244 100%)",
+          boxShadow: [
+            "inset 3px 3px 7px rgba(0,0,0,0.6)",
+            "inset -2px -2px 5px rgba(255,255,255,0.04)",
+            "0 1px 0 rgba(255,255,255,0.06)",
+          ].join(", "),
+          border: "1px solid rgba(255,255,255,0.07)",
+          transition: "box-shadow 0.4s",
         }}
       >
-        {/* Label left — EN */}
+        {/* Active-side green tint that fills behind the knob */}
         <span style={{
           position: "absolute",
-          left: 10,
-          top: "50%",
-          transform: "translateY(-50%)",
-          fontSize: "0.6rem",
-          fontWeight: 800,
-          letterSpacing: "0.08em",
-          color: isEN ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.0)",
-          transition: "color 0.35s, opacity 0.35s",
+          inset: 0,
+          borderRadius: 999,
+          background: isEN
+            ? "linear-gradient(to right, rgba(34,197,94,0.0) 0%, rgba(34,197,94,0.18) 100%)"
+            : "linear-gradient(to left,  rgba(34,197,94,0.0) 0%, rgba(34,197,94,0.18) 100%)",
+          transition: "background 0.4s",
           pointerEvents: "none",
-          userSelect: "none",
-        }}>EN</span>
+        }} />
 
-        {/* Label right — TH */}
+        {/* OFF label (left when TH active) */}
         <span style={{
           position: "absolute",
-          right: 10,
+          left: 11,
           top: "50%",
           transform: "translateY(-50%)",
-          fontSize: "0.6rem",
-          fontWeight: 800,
-          letterSpacing: "0.08em",
-          color: isEN ? "rgba(255,255,255,0.0)" : "rgba(255,255,255,0.9)",
+          fontSize: "0.58rem",
+          fontWeight: 700,
+          letterSpacing: "0.1em",
+          color: isEN ? "rgba(184,204,224,0.35)" : "rgba(184,204,224,0.55)",
           transition: "color 0.35s",
           pointerEvents: "none",
           userSelect: "none",
         }}>TH</span>
 
-        {/* White knob */}
+        {/* ON label (right when EN active) */}
         <span style={{
           position: "absolute",
-          top: 3,
-          left: isEN ? "calc(100% - 28px - 3px)" : 3,
-          width: 28,
-          height: 26,
+          right: 11,
+          top: "50%",
+          transform: "translateY(-50%)",
+          fontSize: "0.58rem",
+          fontWeight: 700,
+          letterSpacing: "0.1em",
+          color: isEN ? "rgba(34,197,94,0.9)" : "rgba(184,204,224,0.35)",
+          transition: "color 0.35s",
+          pointerEvents: "none",
+          userSelect: "none",
+        }}>EN</span>
+
+        {/* Neumorphic knob */}
+        <span style={{
+          position: "absolute",
+          top: PAD,
+          left: isEN ? W - KNOB - PAD : PAD,
+          width: KNOB,
+          height: H - PAD * 2,
           borderRadius: 999,
-          background: "linear-gradient(160deg, #ffffff 0%, #e8edf5 100%)",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.9)",
-          transition: "left 0.4s cubic-bezier(0.34,1.45,0.64,1)",
+          background: "linear-gradient(145deg, #e8edf5 0%, #c8d4e4 100%)",
+          boxShadow: [
+            "3px 3px 8px rgba(0,0,0,0.5)",
+            "-1px -1px 4px rgba(255,255,255,0.15)",
+            "inset 0 1px 0 rgba(255,255,255,0.8)",
+            "inset 0 -1px 0 rgba(0,0,0,0.1)",
+          ].join(", "),
+          transition: "left 0.4s cubic-bezier(0.34,1.4,0.64,1)",
           pointerEvents: "none",
         }} />
       </button>
