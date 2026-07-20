@@ -60,7 +60,7 @@ export default function Header() {
   const LangPill = ({ className = "" }: { className?: string }) => {
     const isEN = locale === "en";
     // Fixed dimensions — never change on toggle
-    const W = 88, H = 36, KNOB = 28, PAD = 4;
+    const W = 72, H = 28, KNOB = 22, PAD = 3;
     return (
       <button
         onClick={switchLocale}
@@ -105,7 +105,7 @@ export default function Header() {
           fontSize: "0.58rem",
           fontWeight: 700,
           letterSpacing: "0.1em",
-          color: isEN ? "rgba(184,204,224,0.35)" : "rgba(184,204,224,0.55)",
+          color: isEN ? "rgba(184,204,224,0.55)" : "rgba(255,255,255,0.9)",
           transition: "color 0.35s",
           pointerEvents: "none",
           userSelect: "none",
@@ -120,7 +120,7 @@ export default function Header() {
           fontSize: "0.58rem",
           fontWeight: 700,
           letterSpacing: "0.1em",
-          color: isEN ? "rgba(34,197,94,0.9)" : "rgba(184,204,224,0.35)",
+          color: isEN ? "rgba(34,197,94,1)" : "rgba(184,204,224,0.55)",
           transition: "color 0.35s",
           pointerEvents: "none",
           userSelect: "none",
