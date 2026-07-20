@@ -57,37 +57,81 @@ export default function Header() {
   const isActive = (path: string) =>
     strippedPath === path || (path !== "/" && strippedPath.startsWith(path));
 
-  const LangPill = ({ className = "" }: { className?: string }) => (
-    <button
-      onClick={switchLocale}
-      aria-label={locale === "en" ? "Switch to Thai" : "เปลี่ยนเป็นภาษาอังกฤษ"}
-      className={`flex items-center gap-0 rounded-full border transition-all duration-300 overflow-hidden ${
-        scrolled || menuOpen
-          ? "border-white/20 hover:border-[--gold-400]"
-          : "border-white/25 hover:border-[--gold-400]"
-      } ${className}`}
-    >
-      <span
-        className={`px-3 py-1.5 text-xs font-bold tracking-wider transition-all duration-300 ${
-          locale === "en"
-            ? "bg-[--gold-600] text-[--navy-950]"
-            : "text-white/50 hover:text-white/80"
-        }`}
+  const LangPill = ({ className = "" }: { className?: string }) => {
+    const isEN = locale === "en";
+    return (
+      <button
+        onClick={switchLocale}
+        aria-label={isEN ? "Switch to Thai" : "เปลี่ยนเป็นภาษาอังกฤษ"}
+        className={className}
+        style={{
+          position: "relative",
+          width: 72,
+          height: 30,
+          borderRadius: 999,
+          background: "rgba(10,20,40,0.7)",
+          border: "1px solid rgba(255,255,255,0.15)",
+          backdropFilter: "blur(8px)",
+          cursor: "pointer",
+          perspective: "200px",
+          overflow: "hidden",
+          flexShrink: 0,
+        }}
       >
-        EN
-      </span>
-      <span className="w-px h-4 bg-white/15 self-center" />
-      <span
-        className={`px-3 py-1.5 text-xs font-bold tracking-wider transition-all duration-300 ${
-          locale === "th"
-            ? "bg-[--gold-600] text-[--navy-950]"
-            : "text-white/50 hover:text-white/80"
-        }`}
-      >
-        TH
-      </span>
-    </button>
-  );
+        {/* Subtle green inner glow */}
+        <span style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: 999,
+          background: "radial-gradient(ellipse at center, rgba(34,197,94,0.08) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
+
+        {/* Sliding knob */}
+        <span style={{
+          position: "absolute",
+          top: 3,
+          left: isEN ? 3 : 39,
+          width: 30,
+          height: 22,
+          borderRadius: 999,
+          background: "linear-gradient(135deg, rgba(34,197,94,0.9) 0%, rgba(22,163,74,0.95) 100%)",
+          boxShadow: "0 2px 8px rgba(34,197,94,0.45), inset 0 1px 0 rgba(255,255,255,0.25)",
+          transition: "left 0.35s cubic-bezier(0.34,1.56,0.64,1)",
+          transform: "rotateY(0deg)",
+          transformStyle: "preserve-3d",
+        }} />
+
+        {/* Labels */}
+        <span style={{
+          position: "absolute",
+          left: 8,
+          top: "50%",
+          transform: "translateY(-50%)",
+          fontSize: "0.65rem",
+          fontWeight: 700,
+          letterSpacing: "0.05em",
+          color: isEN ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.85)",
+          transition: "color 0.3s",
+          pointerEvents: "none",
+          userSelect: "none",
+        }}>EN</span>
+        <span style={{
+          position: "absolute",
+          right: 8,
+          top: "50%",
+          transform: "translateY(-50%)",
+          fontSize: "0.65rem",
+          fontWeight: 700,
+          letterSpacing: "0.05em",
+          color: isEN ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.4)",
+          transition: "color 0.3s",
+          pointerEvents: "none",
+          userSelect: "none",
+        }}>TH</span>
+      </button>
+    );
+  };
 
   return (
     <header
