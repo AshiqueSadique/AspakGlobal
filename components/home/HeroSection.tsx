@@ -261,8 +261,11 @@ export default function HeroSection() {
           {lines.map((line, i) => (
             <div key={i} data-r="line" className="overflow-visible" style={{ opacity: 0 }}>
               <h1
-                className="font-display font-bold leading-[1.05] tracking-tight"
-                style={{ fontSize: "clamp(1.8rem, 4vw, 3.6rem)" }}
+                className="font-display font-bold tracking-tight"
+                style={{
+                  fontSize: "clamp(1.8rem, 4vw, 3.6rem)",
+                  lineHeight: locale === "th" ? 1.35 : 1.05,
+                }}
               >
                 {i === lines.length - 1 ? (
                   <span style={{
@@ -322,7 +325,7 @@ export default function HeroSection() {
         </div>
 
         {/* Subheadline */}
-        <p data-r="sub" className="text-base leading-[1.7] mb-6 max-w-[46ch]" style={{ opacity: 0, color: "#b8cce0" }}>
+        <p data-r="sub" className="text-base mb-6 max-w-[46ch]" style={{ opacity: 0, color: "#b8cce0", lineHeight: locale === "th" ? 1.9 : 1.7 }}>
           {t("subheadline")}
         </p>
 
