@@ -84,17 +84,6 @@ export default function Header() {
           transition: "box-shadow 0.4s",
         }}
       >
-        {/* Active-side green tint that fills behind the knob */}
-        <span style={{
-          position: "absolute",
-          inset: 0,
-          borderRadius: 999,
-          background: isEN
-            ? "linear-gradient(to right, rgba(34,197,94,0.0) 0%, rgba(34,197,94,0.18) 100%)"
-            : "linear-gradient(to left,  rgba(34,197,94,0.0) 0%, rgba(34,197,94,0.18) 100%)",
-          transition: "background 0.4s",
-          pointerEvents: "none",
-        }} />
 
         {/* OFF label (left when TH active) */}
         <span style={{
