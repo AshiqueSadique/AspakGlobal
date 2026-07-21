@@ -16,40 +16,36 @@ export default function StatsBand() {
 
   useEffect(() => {
     const el = sectionRef.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!el) return;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
 
     const counters = el.querySelectorAll<HTMLElement>("[data-count]");
-    const labels   = el.querySelectorAll<HTMLElement>("[data-label]");
-    const lines    = el.querySelectorAll<HTMLElement>("[data-line]");
-    const cards    = el.querySelectorAll<HTMLElement>("[data-stat-card]");
+    const labels = el.querySelectorAll<HTMLElement>("[data-label]");
+    const lines = el.querySelectorAll<HTMLElement>("[data-line]");
 
-    gsap.set(cards,    { opacity: 0, y: 60, scale: 0.9 });
     gsap.set(counters, { opacity: 0, y: 40, scale: 0.85 });
-    gsap.set(labels,   { opacity: 0, y: 16 });
-    gsap.set(lines,    { scaleX: 0, transformOrigin: "center" });
+    gsap.set(labels, { opacity: 0, y: 16 });
+    gsap.set(lines, { scaleX: 0, transformOrigin: "center" });
 
     ScrollTrigger.create({
       trigger: el,
       start: "top 80%",
       onEnter: () => {
-        /* cards pop in with spring */
-        gsap.to(cards, {
-          opacity: 1, y: 0, scale: 1,
-          duration: 1.0, stagger: 0.1, ease: "back.out(1.4)",
-        });
+        gsap.to(counters, { opacity: 1, y: 0, scale: 1, duration: 1.2, stagger: 0.12, ease: "expo.out" });
+        gsap.to(labels, { opacity: 1, y: 0, duration: 1, stagger: 0.12, ease: "expo.out", delay: 0.3 });
+        gsap.to(lines, { scaleX: 1, duration: 1.2, stagger: 0.1, ease: "expo.out", delay: 0.5 });
 
-        /* counters fade up */
-        gsap.to(counters, { opacity: 1, y: 0, scale: 1, duration: 1.2, stagger: 0.12, ease: "expo.out", delay: 0.2 });
-        gsap.to(labels,   { opacity: 1, y: 0, duration: 1,   stagger: 0.12, ease: "expo.out", delay: 0.4 });
-        gsap.to(lines,    { scaleX: 1,  duration: 1.2, stagger: 0.1,  ease: "expo.out", delay: 0.6 });
-
-        /* odometer count-up */
         counters.forEach((counter) => {
           const target = parseInt(counter.getAttribute("data-count") || "0", 10);
           const suffix = counter.getAttribute("data-suffix") || "";
           const obj = { val: 0 };
           gsap.to(obj, {
-            val: target, duration: 2.4, ease: "power3.out", delay: 0.35, snap: { val: 1 },
+            val: target,
+            duration: 2.2,
+            ease: "power3.out",
+            delay: 0.3,
+            snap: { val: 1 },
             onUpdate: () => { counter.textContent = Math.round(obj.val) + suffix; },
           });
         });
@@ -64,9 +60,13 @@ export default function StatsBand() {
       className="relative py-28 overflow-hidden"
       style={{ background: "linear-gradient(135deg, #050d1a 0%, #091628 50%, #070f1e 100%)" }}
     >
-      {/* Ambient glow */}
+      {/* Big ambient glow in centre */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-        <div style={{ width: "700px", height: "700px", background: "radial-gradient(circle, rgba(201,162,39,0.06) 0%, transparent 65%)", borderRadius: "50%" }} />
+        <div style={{
+          width: "700px", height: "700px",
+          background: "radial-gradient(circle, rgba(201,162,39,0.06) 0%, transparent 65%)",
+          borderRadius: "50%",
+        }} />
       </div>
 
       {/* Top + bottom gold lines */}
@@ -80,34 +80,17 @@ export default function StatsBand() {
           <span className="section-label text-[--gold-400]">{t("label")}</span>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {items.map((item, i) => (
-            <div key={i} data-stat-card className="relative text-center px-4 py-8 rounded-2xl group cursor-default"
-              style={{
-                background: "linear-gradient(145deg, rgba(201,162,39,0.05) 0%, rgba(9,22,40,0.4) 100%)",
-                border: "1px solid rgba(201,162,39,0.12)",
-                backdropFilter: "blur(8px)",
-                transition: "border-color 0.4s, box-shadow 0.4s, transform 0.4s cubic-bezier(0.34,1.4,0.64,1)",
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = "rgba(201,162,39,0.45)";
-                el.style.boxShadow = "0 0 40px rgba(201,162,39,0.12), inset 0 0 20px rgba(201,162,39,0.04)";
-                el.style.transform = "translateY(-6px)";
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = "rgba(201,162,39,0.12)";
-                el.style.boxShadow = "";
-                el.style.transform = "";
-              }}
-            >
-              {/* Vertical divider */}
+            <div key={i} className="relative text-center px-4">
+              {/* Vertical divider (except last) */}
               {i < items.length - 1 && (
                 <div className="hidden md:block absolute top-1/2 -translate-y-1/2 right-0 w-px h-16"
                   style={{ background: "linear-gradient(to bottom, transparent, rgba(201,162,39,0.2), transparent)" }} />
               )}
 
+              {/* Counter */}
               <div
                 data-count={item.value}
                 data-suffix={item.suffix}
@@ -124,8 +107,10 @@ export default function StatsBand() {
                 {item.value}{item.suffix}
               </div>
 
+              {/* Gold underline */}
               <div data-line className="h-px w-12 mx-auto mb-3 rounded-full"
                 style={{ background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
+
               <div data-label className="text-sm font-medium tracking-wide leading-snug" style={{ color: "#b8cce0" }}>
                 {item.label}
               </div>

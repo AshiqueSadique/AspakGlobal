@@ -37,40 +37,54 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
 };
 
 const CARD_COLORS = [
-  { from: "#e8ecf2", border: "rgba(201,162,39,0.5)",  glow: "rgba(201,162,39,0.22)"  },
-  { from: "#e4eaf2", border: "rgba(150,180,220,0.5)", glow: "rgba(150,180,220,0.2)"  },
-  { from: "#e8ecf2", border: "rgba(201,162,39,0.5)",  glow: "rgba(201,162,39,0.22)"  },
-  { from: "#e4eaf2", border: "rgba(150,180,220,0.5)", glow: "rgba(150,180,220,0.2)"  },
-  { from: "#e8ecf2", border: "rgba(201,162,39,0.5)",  glow: "rgba(201,162,39,0.22)"  },
+  { from: "#e8ecf2", border: "rgba(201,162,39,0.5)", glow: "rgba(201,162,39,0.22)" },
+  { from: "#e4eaf2", border: "rgba(150,180,220,0.5)", glow: "rgba(150,180,220,0.2)" },
+  { from: "#e8ecf2", border: "rgba(201,162,39,0.5)", glow: "rgba(201,162,39,0.22)" },
+  { from: "#e4eaf2", border: "rgba(150,180,220,0.5)", glow: "rgba(150,180,220,0.2)" },
+  { from: "#e8ecf2", border: "rgba(201,162,39,0.5)", glow: "rgba(201,162,39,0.22)" },
 ];
 
 type ServiceItem = { id: string; title: string; description: string; icon: string };
 
 function TiltCard({ item, idx, locale, learnMore }: {
-  item: ServiceItem; idx: number; locale: string; learnMore: string;
+  item: ServiceItem; idx: number; locale: string; learnMore: string
 }) {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
-  const colors  = CARD_COLORS[idx % CARD_COLORS.length];
+  const colors = CARD_COLORS[idx % CARD_COLORS.length];
 
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width  - 0.5;
-    const y = (e.clientY - rect.top)  / rect.height - 0.5;
-    gsap.to(card, { rotateY: x * 12, rotateX: -y * 10, duration: 0.4, ease: "power2.out", transformPerspective: 800 });
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    gsap.to(card, {
+      rotateY: x * 12,
+      rotateX: -y * 10,
+      duration: 0.4,
+      ease: "power2.out",
+      transformPerspective: 800,
+    });
+
     if (glowRef.current) {
-      gsap.to(glowRef.current, { left: e.clientX - rect.left, top: e.clientY - rect.top, opacity: 1, duration: 0.15, ease: "power2.out" });
+      const cursorX = e.clientX - rect.left;
+      const cursorY = e.clientY - rect.top;
+      gsap.to(glowRef.current, {
+        left: cursorX,
+        top: cursorY,
+        opacity: 1,
+        duration: 0.15,
+        ease: "power2.out",
+      });
     }
   };
 
-  const onMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    gsap.to(e.currentTarget, { y: -8, scale: 1.02, boxShadow: `0 24px 60px rgba(9,22,40,0.2), 0 0 30px ${colors.glow}`, duration: 0.4, ease: "expo.out" });
-  };
-
   const onMouseLeave = () => {
-    gsap.to(cardRef.current, { rotateY: 0, rotateX: 0, y: 0, scale: 1, boxShadow: "none", duration: 0.7, ease: "expo.out" });
+    gsap.to(cardRef.current, {
+      rotateY: 0, rotateX: 0, duration: 0.7, ease: "expo.out",
+    });
     if (glowRef.current) gsap.to(glowRef.current, { opacity: 0, duration: 0.4 });
   };
 
@@ -83,30 +97,52 @@ function TiltCard({ item, idx, locale, learnMore }: {
         background: `linear-gradient(160deg, ${colors.from} 0%, #d0d8e8 100%)`,
         border: `1px solid ${colors.border}`,
         transformStyle: "preserve-3d",
+        transition: "box-shadow 0.4s ease",
         willChange: "transform",
       }}
       onMouseMove={onMouseMove}
-      onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
+      {/* Spotlight glow — tracks cursor exactly */}
       <div ref={glowRef} className="absolute pointer-events-none opacity-0"
-        style={{ width: "160px", height: "160px", borderRadius: "50%", background: `radial-gradient(circle at center, ${colors.glow} 0%, transparent 65%)`, transform: "translate(-50%, -50%)", left: "50%", top: "50%", mixBlendMode: "multiply" }} />
+        style={{
+          width: "160px", height: "160px",
+          borderRadius: "50%",
+          background: `radial-gradient(circle at center, ${colors.glow} 0%, transparent 65%)`,
+          transform: "translate(-50%, -50%)",
+          left: "50%", top: "50%",
+          mixBlendMode: "multiply",
+        }}
+      />
+
+      {/* Top border glow line */}
       <div className="absolute top-0 left-6 right-6 h-px"
-        style={{ background: `linear-gradient(90deg, transparent, ${colors.border}, transparent)` }} />
+        style={{ background: `linear-gradient(90deg, transparent, ${colors.border}, transparent)` }}
+      />
+
+      {/* Icon */}
       <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 flex-shrink-0"
-        style={{ background: "rgba(9,30,58,0.07)", border: `1px solid ${colors.border}`, color: "#C9A227" }}>
+        style={{
+          background: "rgba(9,30,58,0.07)",
+          border: `1px solid ${colors.border}`,
+          color: "#C9A227",
+        }}>
         {SERVICE_ICONS[item.icon]}
       </div>
+
+      {/* Number */}
       <div className="absolute top-6 right-7 font-display font-bold opacity-10 text-[--navy-900]"
         style={{ fontSize: "clamp(2.5rem, 3vw, 3.5rem)" }}>
         {String(idx + 1).padStart(2, "0")}
       </div>
+
       <h3 className="font-display font-bold text-[--navy-900] text-xl mb-3 group-hover:text-[--navy-700] transition-colors duration-300">
         {item.title}
       </h3>
       <p className="text-[--grey-600] text-sm leading-relaxed flex-1 mb-6 max-w-none">
         {item.description}
       </p>
+
       <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-[--gold-700] group-hover:text-[--gold-600] transition-colors duration-300">
         {learnMore}
         <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -120,18 +156,21 @@ function TiltCard({ item, idx, locale, learnMore }: {
 export default function ServiceCards() {
   const t = useTranslations("home.services");
   const locale = useLocale();
+  const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
-  const cardsRef   = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
   const items = t.raw("items") as ServiceItem[];
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
 
     if (headingRef.current) {
       const els = headingRef.current.querySelectorAll("[data-h]");
       gsap.set(els, { opacity: 0, y: 30 });
       ScrollTrigger.create({
-        trigger: headingRef.current, start: "top 88%",
+        trigger: headingRef.current,
+        start: "top 88%",
         onEnter: () => gsap.to(els, { opacity: 1, y: 0, duration: 1.3, stagger: 0.14, ease: "expo.out" }),
         once: true,
       });
@@ -139,19 +178,23 @@ export default function ServiceCards() {
 
     const cards = cardsRef.current?.querySelectorAll<HTMLElement>("a");
     if (cards) {
-      gsap.set(cards, { opacity: 0, y: 60, scale: 0.95 });
+      gsap.set(cards, { opacity: 0, y: 50 });
       ScrollTrigger.create({
-        trigger: cardsRef.current, start: "top 85%",
-        onEnter: () => gsap.to(cards, { opacity: 1, y: 0, scale: 1, duration: 1.0, stagger: 0.1, ease: "back.out(1.4)" }),
+        trigger: cardsRef.current,
+        start: "top 85%",
+        onEnter: () => gsap.to(cards, { opacity: 1, y: 0, duration: 1.1, stagger: 0.1, ease: "expo.out" }),
         once: true,
       });
     }
   }, []);
 
   return (
-    <section className="section-pad relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #0d1e38 0%, #112244 50%, #0d1e38 100%)" }}>
-
+    <section
+      ref={sectionRef}
+      className="section-pad relative overflow-hidden"
+      style={{ background: "linear-gradient(180deg, #0d1e38 0%, #112244 50%, #0d1e38 100%)" }}
+    >
+      {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none" style={{
         backgroundImage: "linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px)",
         backgroundSize: "60px 60px",
@@ -163,16 +206,31 @@ export default function ServiceCards() {
         <div ref={headingRef} className="text-center mb-16">
           <span data-h className="section-label text-[--gold-400]">{t("label")}</span>
           <h2 data-h className="mt-3 font-display font-bold whitespace-pre-line" style={{
-            fontSize: "clamp(1.8rem, 3.5vw, 3rem)", color: "#c8d8f0",
+            fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+            color: "#c8d8f0",
             WebkitTextStroke: "0.5px rgba(201,162,39,0.55)",
             textShadow: "0 0 60px rgba(201,162,39,0.12), 0 2px 8px rgba(0,0,0,0.3)",
           }}>
             {t("heading")}
           </h2>
+          {/* Shimmery gold border */}
           <div data-h className="relative mx-auto mt-6 h-px w-48 overflow-hidden rounded-full">
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 0%, #C9A227 30%, #F0D060 50%, #C9A227 70%, transparent 100%)" }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)", animation: "shimmer-line 2.5s ease-in-out infinite" }} />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(90deg, transparent 0%, #C9A227 30%, #F0D060 50%, #C9A227 70%, transparent 100%)",
+            }} />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)",
+              animation: "shimmer-line 2.5s ease-in-out infinite",
+            }} />
           </div>
+          <style>{`
+            @keyframes shimmer-line {
+              0% { transform: translateX(-100%); }
+              100% { transform: translateX(100%); }
+            }
+          `}</style>
         </div>
 
         <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -187,10 +245,6 @@ export default function ServiceCards() {
           </Link>
         </div>
       </div>
-
-      <style>{`
-        @keyframes shimmer-line { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
-      `}</style>
     </section>
   );
 }
