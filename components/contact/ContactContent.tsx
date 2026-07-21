@@ -47,7 +47,7 @@ export default function ContactContent() {
       gsap.set(formEls, { opacity: 0, x: -40 });
       ScrollTrigger.create({
         trigger: formColRef.current,
-        start: "top 80%",
+        start: "top 100%",
         onEnter: () => gsap.to(formEls, { opacity: 1, x: 0, duration: 0.9, stagger: 0.1, ease: "expo.out" }),
         once: true,
       });
@@ -59,7 +59,7 @@ export default function ContactContent() {
       gsap.set(sideEls, { opacity: 0, x: 40 });
       ScrollTrigger.create({
         trigger: sideColRef.current,
-        start: "top 80%",
+        start: "top 100%",
         onEnter: () => gsap.to(sideEls, { opacity: 1, x: 0, duration: 0.9, stagger: 0.12, ease: "expo.out" }),
         once: true,
       });
@@ -71,7 +71,7 @@ export default function ContactContent() {
       gsap.set(icons, { scale: 0, rotate: -15, opacity: 0 });
       ScrollTrigger.create({
         trigger: sideColRef.current,
-        start: "top 80%",
+        start: "top 100%",
         onEnter: () => gsap.to(icons, { scale: 1, rotate: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: "back.out(1.6)", delay: 0.2 }),
         once: true,
       });
