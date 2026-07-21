@@ -85,7 +85,7 @@ export default function Header() {
         }}
       >
 
-        {/* OFF label (left when TH active) */}
+        {/* TH label — visible only when knob is on right (EN active) */}
         <span style={{
           position: "absolute",
           left: 11,
@@ -94,13 +94,14 @@ export default function Header() {
           fontSize: "0.58rem",
           fontWeight: 700,
           letterSpacing: "0.1em",
-          color: isEN ? "rgba(184,204,224,0.55)" : "rgba(255,255,255,0.9)",
-          transition: "color 0.35s",
+          color: "rgba(184,204,224,0.9)",
+          opacity: isEN ? 1 : 0,
+          transition: "opacity 0.25s",
           pointerEvents: "none",
           userSelect: "none",
         }}>TH</span>
 
-        {/* ON label (right when EN active) */}
+        {/* EN label — visible only when knob is on left (TH active) */}
         <span style={{
           position: "absolute",
           right: 11,
@@ -109,8 +110,9 @@ export default function Header() {
           fontSize: "0.58rem",
           fontWeight: 700,
           letterSpacing: "0.1em",
-          color: isEN ? "rgba(255,255,255,0.95)" : "rgba(184,204,224,0.55)",
-          transition: "color 0.35s",
+          color: "rgba(184,204,224,0.9)",
+          opacity: isEN ? 0 : 1,
+          transition: "opacity 0.25s",
           pointerEvents: "none",
           userSelect: "none",
         }}>EN</span>
