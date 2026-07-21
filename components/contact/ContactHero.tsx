@@ -36,7 +36,7 @@ export default function ContactHero() {
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent, #C9A227, transparent)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.9) 50%, transparent 80%)", animation: "shimmer-line 2.5s ease-in-out infinite" }} />
         </div>
-        <p data-hero className="leading-relaxed text-lg max-w-none" style={{ color: "#1e3a5a" }}>
+        <p data-hero className="leading-relaxed text-lg text-center" style={{ color: "#1e3a5a" }}>
           {t("body")}
         </p>
       </div>
