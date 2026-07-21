@@ -99,7 +99,7 @@ export default function IntroSection() {
 
             {/* Orbit dots */}
             {[0, 72, 144, 216, 288].map((deg) => (
-              <div key={deg} className="absolute pointer-events-none"
+              <div key={deg} className="absolute pointer-events-none" suppressHydrationWarning
                 style={{
                   width: "6px", height: "6px", borderRadius: "50%",
                   background: "#C9A227",
