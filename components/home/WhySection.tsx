@@ -115,23 +115,15 @@ export default function WhySection() {
       });
     }
 
-    /* word-by-word scrub reveal on heading */
+    /* heading fade-up */
     const words = headingRef.current?.querySelectorAll<HTMLElement>("[data-word]");
     if (words?.length) {
-      gsap.set(words, { opacity: 0.1, y: 16 });
+      gsap.set(words, { opacity: 0, y: 24 });
       ScrollTrigger.create({
         trigger: headingRef.current,
-        start: "top 80%",
-        end: "bottom 40%",
-        scrub: 0.8,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          words.forEach((w, i) => {
-            const threshold = i / words.length;
-            const wordProgress = Math.min(1, Math.max(0, (progress - threshold) / (1 / words.length)));
-            gsap.set(w, { opacity: 0.1 + wordProgress * 0.9, y: 16 * (1 - wordProgress) });
-          });
-        },
+        start: "top 85%",
+        onEnter: () => gsap.to(words, { opacity: 1, y: 0, duration: 0.8, stagger: 0.06, ease: "expo.out" }),
+        once: true,
       });
     }
 
