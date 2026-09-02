@@ -34,6 +34,11 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
       <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/>
     </svg>
   ),
+  building: (
+    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.3}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h9a.75.75 0 01.75.75V21H4.5V3.75A.75.75 0 015.25 3zM13.5 21V9.75a.75.75 0 01.75-.75h4.5a.75.75 0 01.75.75V21M7.5 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m-1.5 3h1.5m6-6h1.5m-1.5 3h1.5"/>
+    </svg>
+  ),
 };
 
 const CARD_COLORS = [
@@ -42,13 +47,15 @@ const CARD_COLORS = [
   { from: "#e8ecf2", border: "rgba(201,162,39,0.5)", glow: "rgba(201,162,39,0.22)" },
   { from: "#e4eaf2", border: "rgba(150,180,220,0.5)", glow: "rgba(150,180,220,0.2)" },
   { from: "#e8ecf2", border: "rgba(201,162,39,0.5)", glow: "rgba(201,162,39,0.22)" },
+  { from: "#e4eaf2", border: "rgba(150,180,220,0.5)", glow: "rgba(150,180,220,0.2)" },
 ];
 
-type ServiceItem = { id: string; title: string; description: string; icon: string };
+type ServiceItem = { id: string; title: string; description: string; icon: string; href?: string };
 
 function TiltCard({ item, idx, locale, learnMore }: {
   item: ServiceItem; idx: number; locale: string; learnMore: string
 }) {
+  const isExternal = Boolean(item.href);
   const cardRef = useRef<HTMLAnchorElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
   const colors = CARD_COLORS[idx % CARD_COLORS.length];
@@ -91,7 +98,9 @@ function TiltCard({ item, idx, locale, learnMore }: {
   return (
     <Link
       ref={cardRef}
-      href={`/${locale}/services/${item.id}`}
+      href={item.href ?? `/${locale}/services/${item.id}`}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       className="relative flex flex-col rounded-2xl p-7 overflow-hidden group cursor-pointer"
       style={{
         background: `linear-gradient(160deg, ${colors.from} 0%, #d0d8e8 100%)`,
@@ -145,9 +154,15 @@ function TiltCard({ item, idx, locale, learnMore }: {
 
       <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-[--gold-700] group-hover:text-[--gold-600] transition-colors duration-300">
         {learnMore}
-        <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-        </svg>
+        {isExternal ? (
+          <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+          </svg>
+        ) : (
+          <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+          </svg>
+        )}
       </div>
     </Link>
   );

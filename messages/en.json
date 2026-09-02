@@ -73,6 +73,13 @@
           "title": "Cleaning Services",
           "description": "Professional cleaning for offices, factories, hotels, and residences — branded as Dee Cleaning Company.",
           "icon": "sparkles"
+        },
+        {
+          "id": "propertyos",
+          "title": "PropertyOS",
+          "description": "Property management platform for landlords and agents — listings, tenants, and payments in one place.",
+          "icon": "building",
+          "href": "https://propertyos.aspakglobal.com/"
         }
       ],
       "learnMore": "Learn More",

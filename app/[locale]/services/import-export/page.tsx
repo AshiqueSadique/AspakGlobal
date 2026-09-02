@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import ServicePageLayout from "@/components/services/ServicePageLayout";
 import ImportExportExtra from "@/components/services/ImportExportExtra";
 
@@ -8,7 +9,7 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "importExport.meta" });
-  return { title: t("title"), description: t("description") };
+  return pageMetadata({ locale, path: "/services/import-export", title: t("title"), description: t("description") });
 }
 
 export default async function ImportExportPage({ params }: Props) {

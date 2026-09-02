@@ -54,6 +54,15 @@ const SERVICES = [
       </svg>
     ),
   },
+  {
+    id: "propertyos",
+    color: "#1E293B",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h9a.75.75 0 01.75.75V21H4.5V3.75A.75.75 0 015.25 3zM13.5 21V9.75a.75.75 0 01.75-.75h4.5a.75.75 0 01.75.75V21M7.5 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m-1.5 3h1.5m6-6h1.5m-1.5 3h1.5"/>
+      </svg>
+    ),
+  },
 ];
 
 const LABEL_STYLE = {
@@ -64,7 +73,7 @@ export default function ServicesHub() {
   const t = useTranslations("services");
   const homeT = useTranslations("home.services");
   const locale = useLocale();
-  const items = homeT.raw("items") as Array<{ id: string; title: string; description: string }>;
+  const items = homeT.raw("items") as Array<{ id: string; title: string; description: string; href?: string }>;
   const heroRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -126,8 +135,12 @@ export default function ServicesHub() {
           <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map((item) => {
               const svc = SERVICES.find((s) => s.id === item.id);
+              const isExternal = Boolean(item.href);
               return (
-                <Link key={item.id} href={`/${locale}/services/${item.id}`} data-card
+                <Link key={item.id} href={item.href ?? `/${locale}/services/${item.id}`}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  data-card
                   className="group block rounded-2xl overflow-hidden"
                   style={{
                     background: "#ffffff",
@@ -154,9 +167,15 @@ export default function ServicesHub() {
                     <p className="text-sm leading-relaxed mb-5 max-w-none" style={{ color: "#4a5f7a" }}>{item.description}</p>
                     <div className="flex items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:gap-3" style={{ color: "#a07818" }}>
                       {t("grid.learnMore")}
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                      </svg>
+                      {isExternal ? (
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                        </svg>
+                      )}
                     </div>
                   </div>
                 </Link>
